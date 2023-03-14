@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01
+    Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/parts/header :: common_header(~{::title},~{::link})">
+    <title>Привет!</title>
+</head>
+<body>
+
+<!--menu-->
+<div th:replace="~{/parts/menu :: menutomanager}"></div>
+<div th:replace="~{/parts/header :: content}"></div>
+<!--Konteiner-->
+
+<div class="container-fluid">
+
+    <div>
+        <h2>Список контрактов:</h2>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Номер аукциона</th>
+                <th scope="col">Сумма аукциона</th>
+                <th scope="col">Сумма закупки</th>
+                <th scope="col">Дата аукциона</th>
+                <th scope="col">Дата окончания контракта</th>
+                <th scope="col">Статус заявки</th>
+                <th scope="col">Наименование клиента</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="${contracts}" th:each="contract : ${contracts}">
+                <th scope="row" th:text="${contract.getId()  }"></th>
+                <td th:text="${contract.getContractId()  }"></td>
+                <td th:text="${contract.getContractAmount()  }"></td>
+                <td th:text="${contract.getPurchaseAmount()  }"></td>
+                <td th:text="${contract.getDateAuction()  }"></td>
+                <td th:text="${contract.getContractEndDate()  }"></td>
+                <td th:text="${contract.getStatusEnum()  }"></td>
+                <td th:text="${contract.getClient().getAffiliation()  + ' ' +contract.getClient().getName()  }"></td>
+            </tr>
+
+            </tbody>
+        </table>
+<!--        <ul th:if="${contracts}" th:each="contract : ${contracts}">-->
+<!--            <li>-->
+<!--                <span th:text="${contract.getContractAmount() + ' ' + contract.getContractId() -->
+<!--                + ' ' + contract.getContractEndDate() + ' ' + contract.getDateAuction() -->
+<!--                + ' ' + contract.getPurchaseAmount() + ' ' + contract.getClient()  -->
+<!--                + ' ' + contract.getStatusEnum()}"></span>-->
+<!--                &lt;!&ndash;<a th:href="@{/user/administrator/edit/{id}(id=${student.getId()})}"-->
+<!--                ><img class="img__icon" th:src="@{/icons/edit.png}"></a>-->
+<!--                <a th:href="@{/user/administrator/delete/{id}(id=${student.getId()})}"-->
+<!--                ><img class="img__icon" th:src="@{/icons/delete.png}"></a>&ndash;&gt;-->
+<!--            </li>-->
+<!--        </ul>-->
+        <p th:unless="${contracts}" th:text="${'Список студентов пуст'}"></p>
+    </div>
+
+</div>
+
+<!--Footer-->
+<div th:replace="~{/parts/footer :: content}"></div>
+<div th:replace="~{/parts/parts :: links}"></div>
+</body>
+</html>

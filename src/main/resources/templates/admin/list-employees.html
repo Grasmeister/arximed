@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01
+    Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/parts/header :: common_header(~{::title},~{::link})">
+    <title>Админ Список сотрудника</title>
+</head>
+<body>
+<!--menu-->
+<div th:replace="~{/parts/menu :: menutomanager}"></div>
+<div th:replace="~{/parts/header :: content}"></div>
+<!--Konteiner-->
+
+<div class="container-fluid">
+
+
+        <h2>Список сотрудников:</h2>
+        <ul th:if="${employees}" th:each="employee : ${employees}">
+            <li>
+                <span th:text="${employee.getName() + ' ' + employee.getContractId()}"></span>
+                <!--<a th:href="@{/user/administrator/edit/{id}(id=${student.getId()})}"
+                ><img class="img__icon" th:src="@{/icons/edit.png}"></a>
+                <a th:href="@{/user/administrator/delete/{id}(id=${student.getId()})}"
+                ><img class="img__icon" th:src="@{/icons/delete.png}"></a>-->
+            </li>
+        </ul>
+        <p th:unless="${employees}" th:text="${'Список cjnhelybrjd пуст'}"></p>
+
+
+</div>
+
+
+<!--Footer-->
+<div th:replace="~{/parts/footer :: content}"></div>
+<div th:replace="~{/parts/parts :: links}"></div>
+</body>
+</html>
