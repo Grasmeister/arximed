@@ -6,18 +6,18 @@
 </head>
 <body>
 <!--menu-->
-<div th:replace="~{/parts/menu :: menutomanager}"></div>
+<div th:replace="~{/parts/menu :: menutoadmin}"></div>
 <div th:replace="~{/parts/header :: content}"></div>
 <!--Konteiner-->
 
-<div class="container-fluid">
     <div>
         <h3>Заполнение заявки</h3>
         <form method="post">
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="affiliation">ООО, ИП, АО, ПАО и т.д.</label>
-                    <input class="form-control" id="affiliation" name="affiliation" placeholder="ООО, ИП, и т.д.">
+                    <input class="form-control" id="affiliation" name="affiliation"
+                           placeholder="ООО, ИП, АО, ПАО и т.д.">
                 </div>
                 <div class="form-group col-md-8">
                     <label for="name">Название</label>
@@ -41,11 +41,13 @@
             <div class="form-row">
                 <div class="form-group col-md-8">
                     <label for="bankName">Название банка</label>
-                    <input class="form-control" id="bankName" placeholder="Банк" name="bankName">
+                    <input class="form-control" id="bankName" placeholder="Банк" name="bankName"
+                    >
                 </div>
                 <div class="form-group col-md-4">
                     <label for="bankBik">БИК банка</label>
-                    <input class="form-control" id="bankBik" placeholder="04162046" name="bankBik">
+                    <input class="form-control" id="bankBik" placeholder="04162046" name="bankBik"
+                    >
                 </div>
             </div>
             <div class="form-row">
@@ -86,7 +88,10 @@
             <button class="btn btn-primary" type="submit">Сохранить заявку</button>
         </form>
     </div>
-</div>
+
+
+
+
 <!--Footer-->
 <div th:replace="~{/parts/footer :: content}"></div>
 <div th:replace="~{/parts/parts :: links}"></div>

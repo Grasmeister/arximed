@@ -20,7 +20,7 @@
             <column name="kpp" type="BIGINT"/>
             <column name="phone" type="BIGINT"/>
             <column name="bank_name" type="VARCHAR(128)"/>
-            <column name="bank_bik" type="BIGINT"/>
+            <column name="bank_bik" type="INT"/>
             <column name="bank_cor_account" type="BIGINT"/>
             <column name="bank_account" type="BIGINT"/>
             <column name="address_country" type="VARCHAR(128)"/>

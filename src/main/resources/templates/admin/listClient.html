@@ -6,11 +6,10 @@
 </head>
 <body>
 <!--menu-->
-<div th:replace="~{/parts/menu :: menutomanager}"></div>
+<div th:replace="~{/parts/menu :: menutoadmin}"></div>
 <div th:replace="~{/parts/header :: content}"></div>
 <!--Konteiner-->
 
-<div class="container-fluid">
 
     <div>
         <h2>Список клиентов:</h2>
@@ -39,9 +38,8 @@
             </tbody>
         </table>
 
-        <p th:unless="${clients}" th:text="${'Список студентов пуст'}"></p>
+        <p th:unless="${clients}" th:text="${'Список клиентов пуст'}"></p>
     </div>
-</div>
 
 <!--Footer-->
 <div th:replace="~{/parts/footer :: content}"></div>

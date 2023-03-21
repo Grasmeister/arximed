@@ -7,50 +7,80 @@
 </head>
 <body>
 <!--menu-->
-<div th:replace="~{/parts/menu :: menutomanager}"></div>
+<div th:replace="~{/parts/menu :: menutoadmin}"></div>
 <div th:replace="~{/parts/header :: content}"></div>
 <!--Konteiner-->
 
-<div class="container-fluid">
 
     <div>
+        <h3> Добавление сотрудника</h3>
         <form method="post">
-            <!--        <p th:if="${errorsList!= null}">-->
-            <!--        <p class="errorMessage" th:each="error: ${errorsList}"-->
-            <!--           th:text="${error.getField() + ' ' + error.getDefaultMessage()}"></p>-->
-            <!--        </p>-->
-            <h1>Создание</h1>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="name">Имя</label>
+                    <input class="form-control" id="name" name="name"
+                           placeholder="Имя">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="patronymic">Отчество</label>
+                    <input class="form-control" id="patronymic" name="patronymic"
+                           placeholder="Отчество">
+                </div>
 
-            <div class="block__form">
-                <div class="text__form">Имя:</div>
-                <div><input name="name"/></div>
             </div>
-            <div class="block__form">
-                <div class="text__form">Фамилия:</div>
-                <div><input name="family"/></div>
-            </div>
-            <div class="block__form">
-                <div class="text__form">Отчество:</div>
-                <div><input name="patronymic"/></div>
-            </div>
-            <div class="block__form">
-                <div class="text__form">Статус заявки:</div>
-                <div>
-                    <select name="roleEnum">
-                        <option th:each="role : ${roleList}" th:value="${role.ordinal()}"
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="family">Фамилия</label>
+                    <input class="form-control" id="family" placeholder="Фамилия" name="family">
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="my-1 mr-2" for="roleEnum">Должность</label>
+                    <select class="custom-select my-1 mr-sm-2" id="roleEnum" name="roleEnum">
+                        <option selected>Выбор должности...</option>
+                        <option th:each="role : ${roleList}" th:value="${role.name()}"
                                 th:text="${role.name()}"></option>
+
                     </select>
                 </div>
             </div>
-
-
-            <div>
-                <button>Создать сотрудника</button>
-            </div>
-
+            <button class="btn btn-primary" type="submit">Сохранить</button>
         </form>
+        <!--        <form method="post">-->
+        <!--            &lt;!&ndash;        <p th:if="${errorsList!= null}">&ndash;&gt;-->
+        <!--            &lt;!&ndash;        <p class="errorMessage" th:each="error: ${errorsList}"&ndash;&gt;-->
+        <!--            &lt;!&ndash;           th:text="${error.getField() + ' ' + error.getDefaultMessage()}"></p>&ndash;&gt;-->
+        <!--            &lt;!&ndash;        </p>&ndash;&gt;-->
+        <!--            <h1>Создание</h1>-->
+
+        <!--            <div class="block__form">-->
+        <!--                <div class="text__form">Имя:</div>-->
+        <!--                <div><input name="name"/></div>-->
+        <!--            </div>-->
+        <!--            <div class="block__form">-->
+        <!--                <div class="text__form">Фамилия:</div>-->
+        <!--                <div><input name="family"/></div>-->
+        <!--            </div>-->
+        <!--            <div class="block__form">-->
+        <!--                <div class="text__form">Отчество:</div>-->
+        <!--                <div><input name="patronymic"/></div>-->
+        <!--            </div>-->
+        <!--            <div class="block__form">-->
+        <!--                <div class="text__form">Статус заявки:</div>-->
+        <!--                <div>-->
+        <!--                    <select name="roleEnum">-->
+        <!--                        <option th:each="role : ${roleList}" th:value="${role.ordinal()}"-->
+        <!--                                th:text="${role.name()}"></option>-->
+        <!--                    </select>-->
+        <!--                </div>-->
+        <!--            </div>-->
+
+
+        <!--            <div>-->
+        <!--                <button>Создать сотрудника</button>-->
+        <!--            </div>-->
+
+        <!--        </form>-->
     </div>
-</div>
 
 
 <!--Footer-->

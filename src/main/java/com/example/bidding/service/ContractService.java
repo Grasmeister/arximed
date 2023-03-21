@@ -8,27 +8,29 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+//@Service
 public class ContractService {
-    @Autowired
-    private ContractEntityRepository contractEntityRepository;
+//    @Autowired
+//    private ContractEntityRepository contractEntityRepository;
 
-    public List<Contract> listAll() {
-        return contractEntityRepository.findAll();
-    }
-
-    public Contract createContract(ContractForm contractForm) {
-        Contract contract = new Contract();
-        contract.setContractId(contractForm.getContractId());
-        contract.setContractAmount(contractForm.getContractAmount());
-        contract.setPurchaseAmount(contractForm.getPurchaseAmount());
-        contract.setContractEndDate(contractForm.getTimeContractEnd());
-        contract.setDateAuction(contractForm.getTimeAuction());
-        contract.setClient(contractForm.getClient());
-        contract.setStatusEnum(contractForm.getStatusEnum());
-
-        Contract contract1 = contractEntityRepository.save(contract);
-
-        return contract1;
-    }
+//    public List<Contract> listAll() {
+//        return contractEntityRepository.findAll();
+//    }
+//
+//    public Contract createContract(ContractForm contractForm) {
+//        Contract contract = new Contract();
+//        contract.setContractId(contractForm.getContractId());
+//        contract.setContractAmount(contractForm.getContractAmount());
+//        contract.setPurchaseAmount(contractForm.getPurchaseAmount());
+//        contract.setContractEndDate(contractForm.getTimeContractEnd());
+//        contract.setDateAuction(contractForm.getTimeAuction());
+//        contract.setClient(contractForm.getClient());
+//        contract.setStatusEnum(contractForm.getStatusEnum());
+//        contract.setEmployee(contractForm.getEmployee());
+//
+//
+//        Contract contract1 = contractEntityRepository.save(contract);
+//
+//        return contract1;
+//    }
 }

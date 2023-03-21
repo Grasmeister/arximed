@@ -20,4 +20,5 @@ public class EmployeeForm {
 
     //Должность
     private RoleEnum roleEnum;
+
 }

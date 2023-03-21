@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro https://www.liquibase.org/xml/ns/pro/liquibase-pro-4.3.xsd">
+
+    <!-- Версионирование базы данных для UserService -->
+
+    <changeSet id="userService_003_create_customer_table" author="taranenko">
+        <createTable tableName="customer">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name_customer" type="VARCHAR(255)"/>
+            <column name="inn_customer" type="BIGINT"/>
+            <column name="city_customer" type="VARCHAR(255)"/>
+
+        </createTable>
+
+<!--        <insert tableName="contract">-->
+<!--            <column name="id">1</column>-->
+<!--            <column name="contract_id" >124231423411</column>-->
+<!--            <column name="contract_amount" >12341324111</column>-->
+<!--            <column name="purchase_amount" >12341234132411</column>-->
+<!--            <column name="date_auction" >21.02.2023</column>-->
+<!--            <column name="contract_end_date" >21.02.2021</column>-->
+<!--            <column name="status" >ZAPOLNENIE</column>-->
+<!--            <column name="client_id" >2</column>-->
+<!--            <column name="employee_id" >1</column>-->
+<!--        </insert>-->
+<!--        <insert tableName="contract">-->
+<!--            <column name="id">2</column>-->
+<!--            <column name="contract_id" >124231423422</column>-->
+<!--            <column name="contract_amount" >12341324122</column>-->
+<!--            <column name="purchase_amount" >12341234132422</column>-->
+<!--            <column name="date_auction" >22.02.2023</column>-->
+<!--            <column name="contract_end_date" >22.02.2021</column>-->
+<!--            <column name="status" >ISPOLNENIE</column>-->
+<!--            <column name="client_id" >1</column>-->
+<!--            <column name="employee_id" >2</column>-->
+<!--        </insert>-->
+<!--        <insert tableName="contract">-->
+<!--            <column name="id">3</column>-->
+<!--            <column name="contract_id" >124231423433</column>-->
+<!--            <column name="contract_amount" >12341324133</column>-->
+<!--            <column name="purchase_amount" >12341234132433</column>-->
+<!--            <column name="date_auction" >23.02.2023</column>-->
+<!--            <column name="contract_end_date" >23.02.2021</column>-->
+<!--            <column name="status" >PODACHA</column>-->
+<!--            <column name="client_id" >1</column>-->
+<!--            <column name="employee_id" >1</column>-->
+<!--        </insert>-->
+
+
+        <!--        <rollback>-->
+        <!--            <dropTable tableName="event"/>-->
+        <!--        </rollback>-->
+    </changeSet>
+
+
+</databaseChangeLog>

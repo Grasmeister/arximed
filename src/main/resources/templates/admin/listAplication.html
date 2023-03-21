@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01
+    Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/parts/header :: common_header(~{::title},~{::link})">
+    <title>Привет!</title>
+</head>
+<body>
+
+<!--menu-->
+<div th:replace="~{/parts/menu :: menutoadmin}"></div>
+<div th:replace="~{/parts/header :: content}"></div>
+<!--Konteiner-->
+
+
+<div>
+
+    <div class="container my-3">
+        <div class="row">
+            <div class="col-sm">
+                <div class="container">
+                    <h2>Список заявок:</h2>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="col-4 align-self-end">
+                    <a class="nav-link" th:href="@{/admin/createApplication}">Создать заявку</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Номер заявки</th>
+            <th scope="col">Начальная цена</th>
+            <th scope="col">Закупочная цена</th>
+            <th scope="col">Дата окончани подачи заявки</th>
+            <!--                <th scope="col">Дата рассмотрения заявки</th>-->
+            <th scope="col">Дата аукциона</th>
+            <!--                <th scope="col">Эл. площадка</th>-->
+            <!--                <th scope="col">Размер обеспечения заявки</th>-->
+            <th scope="col">Статус заявки</th>
+            <!--                <th scope="col">Ссылка на диске</th>-->
+            <th scope="col">Заказчик</th>   <!-- для менеджера-->
+            <!--            <th scope="col">площадка</th> для менеджера по заявкам-->
+            <!--                <th scope="col">Предмет закупки</th> для менеджера-->
+            <!--                <th scope="col">Комментарии</th> нужны всем-->
+            <th scope="col">Менеджер</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!--            //Номер заявки private long applicationId;-->
+        <!--            //Начальная максимальная цена private double initialMaximumPrice;-->
+        <!--            //Дата окончания подачи заявки private Timestamp applicationDeadlineDate;-->
+        <!--            //Дата окончание рассмотрения заявки private Timestamp endDateOfApplicationConsideration;-->
+        <!--            //Дата аукциона private Timestamp auctionDate;-->
+        <!--            //Элетронная площадка private String electronicPlatform;-->
+        <!--            //Размер обеспечения заявки private double amountOfApplicationEnsuring;-->
+        <!--            //Статус заявки private ApplicationStatusEnum applicationStatusEnum;-->
+        <!--            //Ссылка на общем диске private String folderOnDisk;-->
+        <!--            //Заказчик private Customer customer;-->
+        <!--            //Предмет закупки private String productPurchase;-->
+        <!--            //Комментарии private String comments;-->
+        <!--            //Менеджер private Employee employee;-->
+
+        <tr th:if="${aplications}" th:each="aplication : ${aplications}">
+            <th class="col-1" scope="row">
+                <a class="nav-link" th:text="${aplication.getId()  }"
+                   th:href="@{/admin/aplication/{aplicationId}(aplicationId=${aplication.getId()})}"></a>
+
+            </th>
+            <td th:text="${aplication.getApplicationId()  }"></td>
+            <td class="col-1" th:text="${aplication.getInitialMaximumPrice()  }"></td>
+            <td class="col-1">555</td>
+            <td th:text="${aplication.getApplicationDeadlineDate()  }"></td>
+            <!--                <td th:text="${aplication.getEndDateOfApplicationConsideration()  }"></td>-->
+            <td th:text="${aplication.getAuctionDate()  }"></td>
+            <!--                <td th:text="${aplication.getElectronicPlatform()  }"></td>-->
+            <!--                <td th:text="${aplication.getAmountOfApplicationEnsuring()  }"></td>-->
+            <td class="col-2" th:text="${aplication.getApplicationStatusEnum()  }"></td>
+            <!--                <td th:text="${aplication.getFolderOnDisk()  }"></td>-->
+            <td class="col-3" th:text="${aplication.getCustomer().getNameCustomer()  }"></td>
+            <!--                <td th:text="${aplication.getProductPurchase()  }"></td>-->
+            <!--                <td th:text="${aplication.getComments()  }"></td>-->
+            <td class="col-1"
+                th:text="${aplication.getEmployee()   }">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <p th:unless="${aplications}" th:text="${'Список заявок пуст'}"></p>
+</div>
+
+<!--Footer-->
+<div th:replace="~{/parts/footer :: content}"></div>
+<div th:replace="~{/parts/parts :: links}"></div>
+</body>
+</html>

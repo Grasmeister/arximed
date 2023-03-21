@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01
+    Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/parts/header :: common_header(~{::title},~{::link})">
+    <title>Привет!</title>
+</head>
+<body>
+
+<!--menu-->
+<div th:replace="~{/parts/menu :: menutoadmin}"></div>
+<div th:replace="~{/parts/header :: content}"></div>
+<!--Konteiner-->
+
+
+    <div>
+        <h2>Список контрактов:</h2>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Номер аукциона</th>
+                <th scope="col">Наименование клиента</th>
+                <th scope="col">Сумма аукциона</th>
+                <th scope="col">Сумма закупки</th>
+                <th scope="col">Дата аукциона</th>
+                <th scope="col">Дата окончания контракта</th>
+                <th scope="col">Статус заявки</th>
+                <th scope="col">Менеджер</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="${contracts}" th:each="contract : ${contracts}">
+                <th scope="row" th:text="${contract.getId()  }"></th>
+                <td th:text="${contract.getContractId()  }"></td>
+                <td th:text="${contract.getClient().getAffiliation()  + ' ' +contract.getClient().getName()  }"></td>
+                <td th:text="${contract.getContractAmount()  }"></td>
+                <td th:text="${contract.getPurchaseAmount()  }"></td>
+                <td th:text="${contract.getDateAuction()  }"></td>
+                <td th:text="${contract.getContractEndDate()  }"></td>
+                <td th:text="${contract.getStatusEnum()  }"></td>
+                <td th:text="${contract.getEmployee().getFamily() + ' ' +  contract.getEmployee().getName() }"></td>
+            </tr>
+
+            </tbody>
+        </table>
+        <p th:unless="${contracts}" th:text="${'Список студентов пуст'}"></p>
+    </div>
+
+
+<!--Footer-->
+<div th:replace="~{/parts/footer :: content}"></div>
+<div th:replace="~{/parts/parts :: links}"></div>
+</body>
+</html>

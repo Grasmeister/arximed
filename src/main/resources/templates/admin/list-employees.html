@@ -7,27 +7,35 @@
 </head>
 <body>
 <!--menu-->
-<div th:replace="~{/parts/menu :: menutomanager}"></div>
+<div th:replace="~{/parts/menu :: menutoadmin}"></div>
 <div th:replace="~{/parts/header :: content}"></div>
 <!--Konteiner-->
 
-<div class="container-fluid">
-
 
         <h2>Список сотрудников:</h2>
-        <ul th:if="${employees}" th:each="employee : ${employees}">
-            <li>
-                <span th:text="${employee.getName() + ' ' + employee.getContractId()}"></span>
-                <!--<a th:href="@{/user/administrator/edit/{id}(id=${student.getId()})}"
-                ><img class="img__icon" th:src="@{/icons/edit.png}"></a>
-                <a th:href="@{/user/administrator/delete/{id}(id=${student.getId()})}"
-                ><img class="img__icon" th:src="@{/icons/delete.png}"></a>-->
-            </li>
-        </ul>
-        <p th:unless="${employees}" th:text="${'Список cjnhelybrjd пуст'}"></p>
 
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Имя</th>
+                <th scope="col">Фамилия</th>
+                <th scope="col">Отчество</th>
+                <th scope="col">Должность</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="${employees}" th:each="employee : ${employees}">
+                <th scope="row" th:text="${employee.getId()  }"></th>
+                <td th:text="${employee.getName()  }"></td>
+                <td th:text="${employee.getFamily()  }"></td>
+                <td th:text="${employee.getPatronymic()  }"></td>
+                <td th:text="${employee.getRoleEnum()  }"></td>
+            </tr>
 
-</div>
+            </tbody>
+        </table>
+        <p th:unless="${employees}" th:text="${'Список сотрудников пуст'}"></p>
 
 
 <!--Footer-->

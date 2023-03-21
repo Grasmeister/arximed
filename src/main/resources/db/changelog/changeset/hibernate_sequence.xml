@@ -7,15 +7,23 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd
         http://www.liquibase.org/xml/ns/dbchangelog-ext https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro https://www.liquibase.org/xml/ns/pro/liquibase-pro-4.3.xsd">
 
-        <include file="db/changelog/changeset/hibernate_sequence.xml"/>
-        <include file="db/changelog/changeset/employee.xml"/>
-        <include file="db/changelog/changeset/customer.xml"/>
-        <include file="db/changelog/changeset/contractNew.xml"/>
-        <include file="db/changelog/changeset/product.xml"/>
-        <include file="db/changelog/changeset/aplication.xml"/>
+    <!-- Версионирование базы данных для UserService -->
+
+    <changeSet id="userService_005_create_hibernate_sequence_table" author="taranenko">
+        <createTable tableName="hibernate_sequence">
+            <column name="next_val" type="BIGINT"/>
+        </createTable>
+
+        <insert tableName="hibernate_sequence">
+            <column name="next_val">1</column>
+
+        </insert>
 
 
-    <!--    <include file="db/changelog/changeset/client.xml"/>-->
-    <!--    <include file="db/changelog/changeset/contract.xml"/>-->
+        <!--        <rollback>-->
+        <!--            <dropTable tableName="event"/>-->
+        <!--        </rollback>-->
+    </changeSet>
+
 
 </databaseChangeLog>

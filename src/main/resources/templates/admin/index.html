@@ -7,11 +7,10 @@
 </head>
 <body>
 <!--menu-->
-<div th:replace="~{/parts/menu :: menutomanager}"></div>
+<div th:replace="~{/parts/menu :: menutoadmin}"></div>
 <div th:replace="~{/parts/header :: content}"></div>
 <!--Konteiner-->
 
-<div class="container-fluid">
     <div>
         <h2>Список чего-то:</h2>
         <!--    <ul th:if="${contracts}" th:each="contract : ${contracts}">-->
@@ -25,7 +24,6 @@
         <!--    </ul>-->
         <!--    <p th:unless="${contracts}" th:text="${'Список студентов пуст'}"></p>-->
     </div>
-</div>
 
 <!--Footer-->
 <div th:replace="~{/parts/footer :: content}"></div>

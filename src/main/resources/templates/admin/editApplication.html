@@ -1,0 +1,273 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01
+    Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/parts/header :: common_header(~{::title},~{::link})">
+    <title>Manager</title>
+</head>
+<body>
+<!--menu-->
+<div th:replace="~{/parts/menu :: menutoadmin}"></div>
+<div th:replace="~{/parts/header :: content}"></div>
+<!--Konteiner-->
+
+
+<h3>Редактирование заявки</h3>
+
+<form    method="post">
+    <fieldset disabled>
+        <div class="form-group">
+            <label for="applicationId">Номер заявки (не изменять!!!)</label>
+            <input class="form-control" id="applicationId" name="applicationId"
+                   th:value="${aplication.getApplicationId()}"
+                   placeholder="">
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="initialMaximumPrice">Начальная цена (не изменять!!!) </label>
+                <input class="form-control" id="initialMaximumPrice" th:value="${aplication.getInitialMaximumPrice()}"
+                       placeholder="10000,00"
+                       name="initialMaximumPrice">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="productPurchase">Предмет закупки (не изменять!!!)</label>
+                <input class="form-control" id="productPurchase" th:value="${aplication.getProductPurchase()}"
+                       placeholder="мед. товары"
+                       name="productPurchase">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="applicationDeadlineDate">Дата окончания подачи заявки (не изменять!!!)</label>
+                <input class="form-control" id="applicationDeadlineDate"
+                       th:value="${aplication.getApplicationDeadlineDate()}"
+                       placeholder="22.02.2023"
+                       name="applicationDeadlineDate" type="date">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="endDateOfApplicationConsideration">Дата окончание рассмотрения заявки (не
+                    изменять!!!)</label>
+                <input class="form-control" id="endDateOfApplicationConsideration"
+                       th:value="${aplication.getEndDateOfApplicationConsideration()}"
+                       placeholder="22.02.2023"
+                       name="endDateOfApplicationConsideration" type="date">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="auctionDate">Дата аукциона (не изменять!!!)</label>
+                <input class="form-control" id="auctionDate" th:value="${aplication.getAuctionDate()}"
+                       placeholder="22.02.2023"
+                       name="auctionDate" type="date">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="amountOfApplicationEnsuring">Размер обеспечения заявки (не изменять!!!)</label>
+                <input class="form-control" id="amountOfApplicationEnsuring"
+                       th:value="${aplication.getAmountOfApplicationEnsuring()}"
+                       placeholder="00,00"
+                       name="amountOfApplicationEnsuring">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="amountOfContractEnsuring">Размер обеспечения контракта (не изменять!!!)</label>
+                <input class="form-control" id="amountOfContractEnsuring"
+                       th:value="${aplication.getAmountOfContractEnsuring()}" placeholder="00,00"
+                       name="amountOfContractEnsuring">
+            </div>
+        </div>
+        <!--// Информация по заказчику начало-->
+        <div class="form-group">
+            <label for="nameCustomer">Наименование заказчика (не изменять!!!)</label>
+            <input class="form-control" id="nameCustomer" name="nameCustomer"
+                   th:value="${aplication.getCustomer().getNameCustomer()}"
+                   placeholder="ООО РАмашка">
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="innCustomer">ИНН заказчика (не изменять!!!)</label>
+                <input class="form-control" id="innCustomer" th:value="${aplication.getCustomer().getInnCustomer()}"
+                       placeholder="1417171717"
+                       name="innCustomer">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="cityCustomer">Город заказчика (не изменять!!!)</label>
+                <input class="form-control" id="cityCustomer" th:value="${aplication.getCustomer().getCityCustomer()}"
+                       placeholder="Москва"
+                       name="cityCustomer">
+            </div>
+        </div>
+    </fieldset>
+    <!--// Информация по заказчику конец-->
+    <!--//Информация по контракту начало-->
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="numberOfSignedContract">Номер подписаного контракта</label>
+            <input class="form-control" id="numberOfSignedContract"
+                   th:value="${aplication.getContractNew.getNumberOfSignedContract()}"
+                   placeholder="22242/212"
+                   name="numberOfSignedContract">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="dateOfContractSigning">Дата окончание рассмотрения заявки</label>
+            <input class="form-control" id="dateOfContractSigning"
+                   th:value="${aplication.getContractNew().getDateOfContractSigning()}"
+                   placeholder="22.02.2023"
+                   name="dateOfContractSigning" type="date">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="contractPrice">Цена контракта</label>
+            <input class="form-control" id="contractPrice" th:value="${aplication.getContractNew().getContractPrice()}"
+                   placeholder="00,00"
+                   name="contractPrice">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="ensuringRefund">Возврат обеспечения</label>
+            <input class="form-control" id="ensuringRefund"
+                   th:value="${aplication.getContractNew().getEnsuringRefund()}" placeholder="22242/212"
+                   name="ensuringRefund">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="deliveryTimeOfProduct">Срок поставки товара (в днях)</label>
+            <input class="form-control" id="deliveryTimeOfProduct"
+                   th:value="${aplication.getContractNew().getDeliveryTimeOfProduct()}" placeholder="150"
+                   name="deliveryTimeOfProduct">
+        </div>
+
+        <div class="form-group col-md-4">
+            <label for="contractExecutionPeriod">Дата исполнения контракта</label>
+            <input class="form-control" id="contractExecutionPeriod"
+                   th:value="${aplication.getContractNew().getContractExecutionPeriod()}"
+                   placeholder="22.02.2023"
+                   name="contractExecutionPeriod" type="date">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="placeOfDeliveryOfProduct">Место поставки товара</label>
+        <input class="form-control" id="placeOfDeliveryOfProduct"
+               th:value="${aplication.getContractNew().getPlaceOfDeliveryOfProduct()}"
+               name="placeOfDeliveryOfProduct"
+               placeholder="Москва, ул. Карла маркса, д.1">
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="contactPerson">Контактное лицо ФИО</label>
+            <input class="form-control" id="contactPerson" th:value="${aplication.getContractNew().getContactPerson()}"
+                   placeholder="Иванов Иван Иванович"
+                   name="contactPerson">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="contactPhone">Контактный телефон</label>
+            <input class="form-control" id="contactPhone" th:value="${aplication.getContractNew().getContactPhone()}"
+                   placeholder="79099099911"
+                   name="contactPhone">
+        </div>
+
+        <div class="form-group col-md-4">
+            <label for="contactEmail">Контактный Email</label>
+            <input class="form-control" id="contactEmail" th:value="${aplication.getContractNew().getContactEmail()}"
+                   placeholder="mail@mail.ru"
+                   name="contactEmail">
+        </div>
+    </div>
+    <!--//Информация по контракту конец-->
+
+    <div class="form-row">
+        <fieldset disabled>
+            <div class="form-group col-md-6">
+                <label for="electronicPlatform">Элетронная площадка</label>
+                <input class="form-control" id="electronicPlatform" th:value="${aplication.getElectronicPlatform()}"
+                       placeholder="sber"
+                       name="electronicPlatform">
+            </div>
+        </fieldset>
+        <div class="form-group col-md-6">
+            <label for="comments">Комментарии</label>
+            <input class="form-control" id="comments" th:value="${aplication.getComments()}"
+                   placeholder="Комментарии..."
+                   name="comments">
+        </div>
+
+    </div>
+
+    <fieldset disabled>
+        <div class="form-group">
+            <label for="folderOnDisk">Ссылка на общем диске</label>
+            <input class="form-control" id="folderOnDisk" name="nameCustomer" th:value="${aplication.getFolderOnDisk()}"
+                   placeholder="Ссылка на общем диске">
+        </div>
+    </fieldset>
+    <div class="form-row">
+        <fieldset disabled>
+            <div class="form-group  col-md-6">
+                <label for="employee">Менеджер</label>
+                <input class="form-control" id="employee" th:value="${aplication.getEmployee().getFamily()}"
+                       placeholder="mail@mail.ru"
+                       name="employee">
+
+                <!--            <select class="custom-select my-1 mr-sm-2" id="employee" name="employee">-->
+                <!--                <option th:value="${aplication.getEmployee().getFamily()}" selected></option>-->
+                <!--                <option th:each="employee : ${employees}" th:value="${employee.getId()}"-->
+                <!--                        th:text="${employee.getFamily() + ' ' + employee.getName()}"></option>-->
+
+                <!--            </select>-->
+            </div>
+        </fieldset>
+        <div class="form-group  col-md-6">
+            <label class="my-1 mr-2" for="applicationStatusEnum"></label>
+            <select class="custom-select my-1 mr-sm-2" id="applicationStatusEnum" name="applicationStatusEnum">
+                <option selected th:text="${aplication.getApplicationStatusEnum()}"></option>
+                <option th:each="applicationStatus : ${applicationStatusList}"
+                        th:value="${applicationStatus.name()}"
+                        th:text="${applicationStatus.name()}"></option>
+
+            </select>
+        </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Сохранить заявку</button>
+</form>
+
+
+<!--<fieldset disabled></fieldset>-->
+<!--//Номер заявки private long applicationId;  +-->
+<!--//Начальная максимальная цена private double initialMaximumPrice;    +-->
+<!--//Предмет закупки private String productPurchase;+-->
+<!--//Дата окончания подачи заявки private String applicationDeadlineDate;+  aplication.getApplicationDeadlineDate()-->
+<!--//Дата окончание рассмотрения заявки private String endDateOfApplicationConsideration;+-->
+<!--//Дата аукциона private String auctionDate; +-->
+<!--//Элетронная площадка private String electronicPlatform; +-->
+<!--//Статус заявки private ApplicationStatusEnum applicationStatusEnum;+-->
+<!--Причина отклонения заявки private String reasonForRejectionOfApplication; необходимо добавить-->
+<!--//Размер обеспечения заявки private double amountOfApplicationEnsuring;+-->
+<!--//Размер обеспечения контракта private double amountOfContractEnsuring;+-->
+<!--Размер обеспечение контракта перечисленные заказчику-->
+<!--private double amountOfContractEnsuringListedToCustomer; необходимо добавить-->
+<!--Победитель аукциона private String auctionWinner; не нужно при создании необходимо добавить-->
+<!--//Ссылка на общем диске private String folderOnDisk;+-->
+<!--//Комментарии private String comments; создастся после заполнения формы.-->
+<!--//Ответственный менеджер private Employee employee;+-->
+
+
+<!--Информация по заказчику необходимо добавить dct поля-->
+<!--//    Наименование заказчика private String nameCustomer;+-->
+<!--//    ИНН заказчика private long innCustomer;+-->
+<!--//    Город заказчика private String cityCustomer;+-->
+
+
+<!--//Информация по контракту-->
+<!--//Номер подписаного контракта private String numberOfSignedContract;не нужно при создании-->
+<!--//Дата подписания контракта private String dateOfContractSigning;не нужно при создании-->
+<!--//Цена контракта private double contractPrice;не нужно при создании-->
+<!--//Возврат обеспечения private String ensuringRefund;не нужно при создании-->
+<!--//Срок поставки товара private int deliveryTimeOfProduct;не нужно при создании-->
+<!--//Срок исполнения контракта private String contractExecutionPeriod;не нужно при создании-->
+<!--//Место поставки товара private String placeOfDeliveryOfProduct; не нужно при создании-->
+<!--//Контактное лицо ФИО private String contactPerson;не нужно при создании-->
+<!--//Контактный телефон по контракту private long contactPhone;не нужно при создании-->
+<!--//Контактный Email по контракту private String contactEmail;не нужно при создании-->
+
+
+<!--Footer-->
+<div th:replace="~{/parts/footer :: content}"></div>
+<div th:replace="~{/parts/parts :: links}"></div>
+</body>
+</html>

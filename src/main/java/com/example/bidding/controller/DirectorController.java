@@ -1,47 +1,46 @@
 package com.example.bidding.controller;
 
-import com.example.bidding.service.EmployeeService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+//@Controller
+//@RequestMapping("/director")
+public class DirectorController {
 
-@Controller
-@RequestMapping("/manager")
-public class ManagerController {
 //
 //    @Autowired
 //    private ContractService contractService;
-
+//    @Autowired
+//    private EmployeeService employeeService;
 //    @Autowired
 //    private ClientService clientService;
-
-    @Autowired
-    private EmployeeService employeeService;
-//    private final List<StatusEnum> statusEnumList = Arrays.asList(StatusEnum.ZAPOLNENIE, StatusEnum.PODACHA, StatusEnum.ISPOLNENIE, StatusEnum.CLOSE, StatusEnum.OTKAZ);
-    //Атрибут модели для хранения списка ошибок.
-    public static final String FORM_ERROR_ATTR = "errorsList";
-
-    @GetMapping("/")
-    public String index(final Model model) {
-//        model.addAttribute("contracts", contractService.listAll());
-
-
-        return "/manager/index";
-    }
 //
-//    @GetMapping("/createContract")
-//    public String createFormContract(final Model model) {
-//        model.addAttribute("clients", clientService.findAll());
-//        model.addAttribute("employees", employeeService.findAll());
-//        model.addAttribute("statusList", StatusEnum.values());
-//        return "/manager/createContract";
+//    private final List<RoleEnum> roleEnumList = Arrays.asList(RoleEnum.values());
+//    //Атрибут модели для хранения списка ошибок.
+//    public static final String FORM_ERROR_ATTR = "errorsList";
+//
+//    @GetMapping("/")
+//    public String index(final Model model) {
+////        model.addAttribute("contracts", contractService.listAll());
+////        model.addAttribute("clients", clientService.findAll());
+////        model.addAttribute("employees", employeeService.findAll());
+//        return "/admin/index";
+//    }
+//
+//    @GetMapping("/listContract")
+//    public String listContract(final Model model) {
+//        model.addAttribute("contracts", contractService.listAll());
+//
+//
+//        return "/admin/listContract";
+//    }
+//
+//    @GetMapping("/createEmployee")
+//    public String createFormEmployee(final Model model) {
+//        model.addAttribute("roleList", roleEnumList);
+//        return "/admin/createEmployee";
 //    }
 //
 //    //Получаем форму контракта с предварительной валидацией.
-//    @PostMapping("/createContract")
-//    public String createFormContractProcessing(@ModelAttribute final ContractForm form,
+//    @PostMapping("/createEmployee")
+//    public String createFormEmployeeProcessing(@ModelAttribute final EmployeeForm form,
 //                                               final BindingResult bindingResult,
 //                                               final Model model) {
 //        if (bindingResult.hasErrors()) {
@@ -50,36 +49,31 @@ public class ManagerController {
 //                    bindingResult.getAllErrors()
 //            );
 //            System.out.println(FORM_ERROR_ATTR);
-//            return createFormContract(model);
+//            return createFormEmployee(model);
 //        }
 //
-//        Contract contract = contractService.createContract(ContractForm.builder()
-//                .contractId(form.getContractId())
-//                .contractAmount(form.getContractAmount())
-//                .dateAuction(form.getDateAuction())
-//                .contractEndDate(form.getContractEndDate())
-//                .purchaseAmount(form.getPurchaseAmount())
-//                .client(form.getClient())
-//                .statusEnum(statusEnumList.get(form.getStatusEnum().ordinal()))
-//                .employee(form.getEmployee())
+//        Employee employee = employeeService.createEmployee(EmployeeForm.builder()
+//                .name(form.getName())
+//                .patronymic(form.getPatronymic())
+//                .family(form.getFamily())
+//                .roleEnum(roleEnumList.get(form.getRoleEnum().ordinal()))
 //                .build());
 //
-//        return "redirect:/manager/";
+//        return "redirect:/admin/list-employees";
 //    }
 //
-//    @GetMapping("/listClient")
-//    public String listClient(final Model model) {
-//        model.addAttribute("clients", clientService.findAll());
-//        return "/manager/listClient";
+//    @GetMapping("/list-employees")
+//    public String listEmployee(final Model model) {
+//        model.addAttribute("employees", employeeService.findAll());
+//        return "/admin/list-employees";
 //    }
 //
 //    @GetMapping("/createClient")
 //    public String createFormClient(final Model model) {
-////        model.addAttribute("clients", clientService.findAll());
 //        return "/manager/createClient";
 //    }
 //
-//    //Получаем форму контракта с предварительной валидацией.
+//    //Получаем форму  с предварительной валидацией.
 //    @PostMapping("/createClient")
 //    public String createFormClientProcessing(@ModelAttribute final CreateFormClient form,
 //                                             final BindingResult bindingResult,
@@ -93,7 +87,6 @@ public class ManagerController {
 //
 //            return createFormClient(model);
 //        }
-//
 //
 //        Client client = clientService.createClient(ClientForm.builder()
 //                .name(form.getName())
@@ -114,4 +107,11 @@ public class ManagerController {
 //
 //        return "redirect:/manager/listClient";
 //    }
+//
+//    @GetMapping("/listClient")
+//    public String listClient(final Model model) {
+//        model.addAttribute("clients", clientService.findAll());
+//        return "/admin/listClient";
+//    }
+
 }

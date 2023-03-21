@@ -8,5 +8,6 @@ public enum AffiliationClientEnum {
     PAO,
     FGUP;
 
-    AffiliationClientEnum(){}
+    AffiliationClientEnum() {
+    }
 }

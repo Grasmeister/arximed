@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01
+    Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/parts/header :: common_header(~{::title},~{::link})">
+    <title>Manager</title>
+</head>
+<body>
+<!--menu-->
+<div th:replace="~{/parts/menu :: menutoadmin}"></div>
+<div th:replace="~{/parts/header :: content}"></div>
+<!--Konteiner-->
+
+
+<h3>Заполнение заявки</h3>
+<form action="/admin/createApplication" method="post">
+
+    <div class="form-row">
+        <div class="form-group  col-md-4">
+            <label for="applicationId">Номер заявки</label>
+            <input class="form-control" id="applicationId" name="applicationId" placeholder="Номер заявки">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="initialMaximumPrice">Начальная цена</label>
+            <input class="form-control" id="initialMaximumPrice" placeholder="10000,00" name="initialMaximumPrice">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="productPurchase">Предмет закупки</label>
+            <input class="form-control" id="productPurchase" placeholder="мед. товары" name="productPurchase">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="applicationDeadlineDate">Дата окончания подачи заявки</label>
+            <input class="form-control" id="applicationDeadlineDate" placeholder="22.02.2023"
+                   name="applicationDeadlineDate" type="date">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="endDateOfApplicationConsideration">Дата окончание рассмотрения заявки</label>
+            <input class="form-control" id="endDateOfApplicationConsideration" placeholder="22.02.2023"
+                   name="endDateOfApplicationConsideration" type="date">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="auctionDate">Дата аукциона</label>
+            <input class="form-control" id="auctionDate" placeholder="22.02.2023"
+                   name="auctionDate" type="date">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="nameCustomer">Наименование заказчика</label>
+            <input class="form-control" id="nameCustomer" name="nameCustomer" placeholder="ООО Ромашка">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="innCustomer">ИНН заказчика</label>
+            <input class="form-control" id="innCustomer" placeholder="155555666"
+                   name="innCustomer">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="cityCustomer">Город заказчика</label>
+            <input class="form-control" id="cityCustomer" placeholder="Москва"
+                   name="cityCustomer">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="amountOfApplicationEnsuring">Размер обеспечения заявки</label>
+            <input class="form-control" id="amountOfApplicationEnsuring" placeholder="00,00"
+                   name="amountOfApplicationEnsuring">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="amountOfContractEnsuring">Размер обеспечения контракта</label>
+            <input class="form-control" id="amountOfContractEnsuring" placeholder="00,00"
+                   name="amountOfContractEnsuring">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="electronicPlatform">Элетронная площадка</label>
+            <input class="form-control" id="electronicPlatform" placeholder="sber"
+                   name="electronicPlatform">
+        </div>
+    </div>
+    <div class="form-group ">
+        <label for="comments">Комментарии</label>
+        <input class="form-control" id="comments" placeholder="Комментарии..."
+               name="comments">
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="folderOnDisk">Ссылка на общем диске</label>
+            <input class="form-control" id="folderOnDisk" name="nameCustomer" placeholder="Номер заявки">
+        </div>
+        <div class="form-group  col-md-4">
+            <label class="my-1 mr-2" for="employee">Менеджер</label>
+            <select class="custom-select my-1 mr-sm-2" id="employee" name="employee">
+                <option selected>Выбор статуса...</option>
+                <option th:each="employee : ${employees}" th:value="${employee.getId()}"
+                        th:text="${employee.getFamily() + ' ' + employee.getName()}"></option>
+
+            </select>
+            <!--            <input type="text" class="form-control" id="statusEnum" placeholder="1234 Main St">-->
+        </div>
+        <div class="form-group  col-md-4">
+            <label class="my-1 mr-2" for="applicationStatusEnum">Статус заявки</label>
+            <select class="custom-select my-1 mr-sm-2" id="applicationStatusEnum" name="applicationStatusEnum">
+                <option selected>Выбор статуса...</option>
+                <option th:each="applicationStatus : ${applicationStatusList}"
+                        th:value="${applicationStatus.name()}"
+                        th:text="${applicationStatus.name()}"></option>
+
+            </select>
+        </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Сохранить заявку</button>
+</form>
+
+
+<!--//Номер заявки private long applicationId;  +-->
+<!--//Начальная максимальная цена private double initialMaximumPrice;    +-->
+<!--//Предмет закупки private String productPurchase;+-->
+<!--//Дата окончания подачи заявки private String applicationDeadlineDate;+-->
+<!--//Дата окончание рассмотрения заявки private String endDateOfApplicationConsideration;+-->
+<!--//Дата аукциона private String auctionDate; +-->
+<!--//Элетронная площадка private String electronicPlatform; +-->
+<!--//Статус заявки private ApplicationStatusEnum applicationStatusEnum;+-->
+<!--//Причина отклонения заявки private String reasonForRejectionOfApplication; не нужно при создании-->
+<!--//Размер обеспечения заявки private double amountOfApplicationEnsuring;+-->
+<!--//Размер обеспечения контракта private double amountOfContractEnsuring;+-->
+<!--//Размер обеспечение контракта перечисленные заказчику
+                private double amountOfContractEnsuringListedToCustomer; не нужно при создании-->
+<!--// Победитель аукциона private String auctionWinner; не нужно при создании -->
+<!--//Ссылка на общем диске private String folderOnDisk;+-->
+<!--//Комментарии private String comments; создастся после заполнения формы.-->
+<!--//Ответственный менеджер private Employee employee;+-->
+<!--// Информация по заказчику-->
+<!--//    Наименование заказчика private String nameCustomer;+-->
+<!--//    ИНН заказчика private long innCustomer;+-->
+<!--//    Город заказчика private String cityCustomer;+-->
+<!--//Информация по контракту-->
+<!--//Номер подписаного контракта private String numberOfSignedContract;не нужно при создании-->
+<!--//Дата подписания контракта private String dateOfContractSigning;не нужно при создании-->
+<!--//Цена контракта private double contractPrice;не нужно при создании-->
+<!--//Возврат обеспечения private String ensuringRefund;не нужно при создании-->
+<!--//Срок поставки товара private int deliveryTimeOfProduct;не нужно при создании-->
+<!--//Срок исполнения контракта private String contractExecutionPeriod;не нужно при создании-->
+<!--//Место поставки товара private String placeOfDeliveryOfProduct; не нужно при создании-->
+<!--//Контактное лицо ФИО private String contactPerson;не нужно при создании-->
+<!--//Контактный телефон по контракту private long contactPhone;не нужно при создании-->
+<!--//Контактный Email по контракту private String contactEmail;не нужно при создании-->
+
+
+<!--Footer-->
+<div th:replace="~{/parts/footer :: content}"></div>
+<div th:replace="~{/parts/parts :: links}"></div>
+</body>
+</html>

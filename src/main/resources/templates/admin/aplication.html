@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01
+    Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/parts/header :: common_header(~{::title},~{::link})">
+    <title>Manager</title>
+</head>
+<body>
+<!--menu-->
+<div th:replace="~{/parts/menu :: menutoadmin}"></div>
+<div th:replace="~{/parts/header :: content}"></div>
+<!--Konteiner-->
+<div class="container my-3">
+    <div class="row">
+        <div class="col-sm">
+            <div class="container">
+                <h3 th:text="${'Заявка № ' +  aplication.getApplicationId()}"></h3>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="col-4 align-self-end">
+                <a class="nav-link"
+                   th:href="@{/admin/aplication/{aplicationId/editApplication}(aplicationId=${aplication.getId()})}">Подробнее</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-sm">
+        <div class="container my-3">
+            <h4>Информация по заказу</h4>
+        </div>
+        <table class="table ">
+            <tbody>
+            <tr>
+                <th class="col-6" scope="row">Начальная максимальная цена</th>
+                <td class="col-6" th:text="${aplication.getInitialMaximumPrice()}"></td>
+            </tr>
+            <tr>
+                <th class="col-6" scope="row">Предмет закупки</th>
+                <td class="col-6" th:text="${aplication.getProductPurchase()}"></td>
+            </tr>
+            <tr>
+                <th class="col-6" scope="row">Дата подачи</th>
+                <td class="col-6" th:text="${aplication.getApplicationDeadlineDate()}"></td>
+            </tr>
+            <tr>
+                <th class="col-6" scope="row">Дата рассмотрения</th>
+                <td class="col-6" th:text="${aplication.getEndDateOfApplicationConsideration()}"></td>
+            </tr>
+            <tr>
+                <th class="col-6" scope="row">Дата аукциона</th>
+                <td class="col-6" th:text="${aplication.getAuctionDate()}"></td>
+            </tr>
+            <tr>
+                <th class="col-6" scope="row">Элетронная площадка</th>
+                <td class="col-6" th:text="${aplication.getElectronicPlatform()}"></td>
+            </tr>
+            <tr>
+                <th class="col-6" scope="row">Статус заявки</th>
+                <td class="col-6" th:text="${aplication.getApplicationStatusEnum()}"></td>
+            </tr>
+            <tr>
+                <th class="col-6" scope="row">Причина отклонения()</th>
+                <td class="col-6" th:text="${aplication.getApplicationId()}"></td>
+            </tr>
+            <tr>
+                <th class="col-6" scope="row">Размер обеспечения заявки</th>
+                <td class="col-6" th:text="${aplication.getAmountOfApplicationEnsuring()}"></td>
+            </tr>
+            <tr>
+                <th class="col-6" scope="row">Размер обеспечения контракта</th>
+                <td class="col-6" th:text="${aplication.getAmountOfContractEnsuring()}"></td>
+            </tr>
+            <tr>
+                <th class="col-6" scope="row">Размер обеспечение перечисленные заказчику</th>
+                <td class="col-6" th:text="${aplication.getAmountOfContractEnsuringListedToCustomer()}"></td>
+            </tr>
+            <tr>
+                <th class="col-6" scope="row">Победитель аукциона</th>
+                <td class="col-6" th:text="${aplication.getAuctionWinner()}"></td>
+            </tr>
+            <tr>
+                <th class="col-6" scope="row">Ссылка на общем диске</th>
+                <td class="col-6" th:text="${aplication.getFolderOnDisk()}"></td>
+            </tr>
+            <tr>
+                <th class="col-6" scope="row">Комментарии</th>
+                <td class="col-6" th:text="${aplication.getComments()}"></td>
+            </tr>
+            <tr>
+                <th class="col-6" scope="row">Ответственный менеджер</th>
+                <td class="col-6"
+                    th:text="${aplication.getEmployee().getFamily() + ' ' + aplication.getEmployee().getName()}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!--<fieldset disabled></fieldset>-->
+    <!--//Номер заявки private long applicationId;  +-->
+    <!--//Начальная максимальная цена private double initialMaximumPrice;    +-->
+    <!--//Предмет закупки private String productPurchase;+-->
+    <!--//Дата окончания подачи заявки private String applicationDeadlineDate;+-->
+    <!--//Дата окончание рассмотрения заявки private String endDateOfApplicationConsideration;+-->
+    <!--//Дата аукциона private String auctionDate; +-->
+    <!--//Элетронная площадка private String electronicPlatform; +-->
+    <!--//Статус заявки private ApplicationStatusEnum applicationStatusEnum;+-->
+    <!--//Причина отклонения заявки private String reasonForRejectionOfApplication; не нужно при создании-->
+    <!--//Размер обеспечения заявки private double amountOfApplicationEnsuring;+-->
+    <!--//Размер обеспечения контракта private double amountOfContractEnsuring;+-->
+    <!--//Размер обеспечение контракта перечисленные заказчику
+                    private double amountOfContractEnsuringListedToCustomer; не нужно при создании-->
+    <!--// Победитель аукциона private String auctionWinner; не нужно при создании -->
+    <!--//Ссылка на общем диске private String folderOnDisk;+-->
+    <!--//Комментарии private String comments; создастся после заполнения формы.-->
+    <!--//Ответственный менеджер private Employee employee;+-->
+    <div class="col-sm">
+        <div class="container my-3">
+            <h4>Информация по заказчику</h4>
+        </div>
+        <table class="table">
+            <tbody>
+            <tr>
+                <th class="col-6" scope="row">Наименование</th>
+                <td class="col-6" th:text="${aplication.getCustomer().getNameCustomer()}"></td>
+            </tr>
+            <tr>
+                <th class="col-6" scope="row">ИНН</th>
+                <td class="col-6" th:text="${aplication.getCustomer().getInnCustomer()}"></td>
+            </tr>
+            <tr>
+                <th class="col-6" scope="row">Город</th>
+                <td class="col-6" th:text="${aplication.getCustomer().getCityCustomer()}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="container my-3">
+            <h4>Информация по контраку</h4>
+        </div>
+        <table class="table">
+            <tbody>
+            <tr>
+                <th class="col-6" scope="row">Номер подписаного контракта</th>
+                <!--                <td class="col-6"></td>-->
+                <td th:text="${contract.getNumberOfSignedContract()}"></td>
+            </tr>
+            <tr>
+                <th class="col-6" scope="row">Дата подписания</th>
+                <!--                <td class="col-6"></td>-->
+                <td th:text="${contract.getDateOfContractSigning()  }"></td>
+            </tr>
+            <tr>
+                <th class="col-6" scope="row">Цена контракта</th>
+                <!--                <td class="col-6"></td>-->
+                <td th:text="${contract.getContractPrice()  }"></td>
+            </tr>
+           <tr>
+                <th class="col-6" scope="row">Возврат обеспечения</th>
+                <!--                <td class="col-6"></td>-->
+                <td th:text="${contract.getEnsuringRefund()  }"></td>
+            </tr>
+            <tr>
+                <th class="col-6" scope="row">Срок поставки товара(В днях)</th>
+                <!--                <td class="col-6"></td>-->
+                <td th:text="${contract.getDeliveryTimeOfProduct()  }"></td>
+            </tr>
+            <tr>
+                <th class="col-6" scope="row">Срок исполнения контракта</th>
+<!--                <td class="col-6"></td>-->
+                <td th:text="${contract.getContractExecutionPeriod()  }"></td>
+            </tr>
+            <tr>
+                <th class="col-6" scope="row">Место поставки товара</th>
+                <!--                <td class="col-6"></td>-->
+                <td th:text="${contract.getPlaceOfDeliveryOfProduct()  }"></td>
+            </tr>
+            <tr>
+                <th class="col-6" scope="row">Контактное лицо ФИО</th>
+                <!--                <td class="col-6"></td>-->
+                <td th:text="${contract.getContactPerson()  }"></td>
+            </tr>
+            <tr>
+                <th class="col-6" scope="row">Контактный телефон</th>
+                <!--                <td class="col-6"></td>-->
+                <td th:text="${contract.getContactPhone()  }"></td>
+            </tr>
+            <tr>
+                <th class="col-6" scope="row">Контактный Email</th>
+                <!--                <td class="col-6"></td>-->
+                <td th:text="${contract.getContactEmail()  }"></td>
+
+            </tr>
+            </tbody>
+        </table>
+        <!--//Информация по контракту-->
+        <!--//Номер подписаного контракта private String numberOfSignedContract;не нужно при создании-->
+        <!--//Дата подписания контракта private String dateOfContractSigning;не нужно при создании-->
+        <!--//Цена контракта private double contractPrice;не нужно при создании-->
+        <!--//Возврат обеспечения private String ensuringRefund;не нужно при создании-->
+        <!--//Срок поставки товара private int deliveryTimeOfProduct;не нужно при создании-->
+        <!--//Срок исполнения контракта private String contractExecutionPeriod;не нужно при создании-->
+        <!--//Место поставки товара private String placeOfDeliveryOfProduct; не нужно при создании-->
+        <!--//Контактное лицо ФИО private String contactPerson;не нужно при создании-->
+        <!--//Контактный телефон по контракту private long contactPhone;не нужно при создании-->
+        <!--//Контактный Email по контракту private String contactEmail;не нужно при создании-->
+
+
+        <!--// Информация по заказчику-->
+        <!--//    Наименование заказчика private String nameCustomer;+-->
+        <!--//    ИНН заказчика private long innCustomer;+-->
+        <!--//    Город заказчика private String cityCustomer;+-->
+
+    </div>
+</div>
+
+<!--Footer-->
+<div th:replace="~{/parts/footer :: content}"></div>
+<div th:replace="~{/parts/parts :: links}"></div>
+</body>
+</html>

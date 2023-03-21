@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro https://www.liquibase.org/xml/ns/pro/liquibase-pro-4.3.xsd">
+
+    <!-- Версионирование базы данных для UserService -->
+
+    <changeSet id="userService_001_create_application_table" author="taranenko">
+        <createTable tableName="application">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="application_id" type="BIGINT"/>
+            <column name="initial_maximum_price" type="DOUBLE"/>
+            <column name="product_purchase" type="VARCHAR(255)"/>
+            <column name="application_deadline_date" type="DATETIME"/>
+            <column name="end_date_of_application_consideration" type="DATETIME"/>
+            <column name="auction_date" type="DATETIME"/>
+            <column name="electronic_platform" type="VARCHAR(255)"/>
+            <column name="application_status" type="VARCHAR(255)"/>
+            <column name="reason_for_rejection_of_application" type="VARCHAR(255)"/>
+            <column name="amount_of_application_ensuring" type="DOUBLE"/>
+            <column name="amount_of_contract_ensuring" type="DOUBLE"/>
+            <column name="amount_of_contract_ensuring_listed_to_customer" type="DOUBLE"/>
+            <column name="auction_winner" type="VARCHAR(255)"/>
+            <column name="folder_on_disk" type="VARCHAR(255)"/>
+            <column name="comments" type="VARCHAR(255)"/>
+            <column name="employee_id" type="INT"/>
+            <column name="customer_id" type="INT"/>
+            <column name="contract_new_id" type="INT"/>
+
+        </createTable>
+
+<!--        <insert tableName="application">-->
+<!--            <column name="id">1</column>-->
+<!--            <column name="contract_id" >124231423411</column>-->
+<!--            <column name="contract_amount" >12341324111</column>-->
+<!--            <column name="purchase_amount" >12341234132411</column>-->
+<!--            <column name="date_auction" >21.02.2023</column>-->
+<!--            <column name="contract_end_date" >21.02.2021</column>-->
+<!--            <column name="status" >ZAPOLNENIE</column>-->
+<!--            <column name="client_id" >2</column>-->
+<!--            <column name="employee_id" >1</column>-->
+<!--        </insert>-->
+<!--        <insert tableName="contract">-->
+<!--            <column name="id">2</column>-->
+<!--            <column name="contract_id" >124231423422</column>-->
+<!--            <column name="contract_amount" >12341324122</column>-->
+<!--            <column name="purchase_amount" >12341234132422</column>-->
+<!--            <column name="date_auction" >22.02.2023</column>-->
+<!--            <column name="contract_end_date" >22.02.2021</column>-->
+<!--            <column name="status" >ISPOLNENIE</column>-->
+<!--            <column name="client_id" >1</column>-->
+<!--            <column name="employee_id" >2</column>-->
+<!--        </insert>-->
+<!--        <insert tableName="contract">-->
+<!--            <column name="id">3</column>-->
+<!--            <column name="contract_id" >124231423433</column>-->
+<!--            <column name="contract_amount" >12341324133</column>-->
+<!--            <column name="purchase_amount" >12341234132433</column>-->
+<!--            <column name="date_auction" >23.02.2023</column>-->
+<!--            <column name="contract_end_date" >23.02.2021</column>-->
+<!--            <column name="status" >PODACHA</column>-->
+<!--            <column name="client_id" >1</column>-->
+<!--            <column name="employee_id" >1</column>-->
+<!--        </insert>-->
+
+
+        <!--        <rollback>-->
+        <!--            <dropTable tableName="event"/>-->
+        <!--        </rollback>-->
+    </changeSet>
+
+
+</databaseChangeLog>
