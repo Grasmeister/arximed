@@ -3,22 +3,21 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="/parts/header :: common_header(~{::title},~{::link})">
-    <title>Гавная</title>
+    <title>Admin гавная</title>
 </head>
 <body>
-
 <!--menu-->
 
 <div th:replace="~{/parts/header :: content}"></div>
 <div th:replace="~{/parts/menu :: menutoadmin}"></div>
 <!--Konteiner-->
 
-
-
+    <div>
+        <div th:replace="~{/parts/menu :: menutoadmin}"></div>
+    </div>
 
 <!--Footer-->
 <div th:replace="~{/parts/footer :: content}"></div>
 <div th:replace="~{/parts/parts :: links}"></div>
-
 </body>
 </html>

@@ -1,6 +1,7 @@
 package com.example.bidding.model.createForm;
 
 import com.example.bidding.enums.ApplicationStatusEnum;
+import com.example.bidding.enums.ContractStatusEnum;
 import com.example.bidding.model.employee.Employee;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,6 +21,7 @@ public class CreateFormApplication {
     static {
         FORMAT = new SimpleDateFormat("dd-MM-yyyy");
     }
+// часть формы про заявкку
 
     //Номер заявки
     private long applicationId;
@@ -27,50 +29,14 @@ public class CreateFormApplication {
     //Начальная максимальная цена
     private double initialMaximumPrice;
 
+    //Закупочная цена
+    private double purchasePrice;
+
     //Предмет закупки
     private String productPurchase;
 
-    //Дата окончания подачи заявки
-    private String applicationDeadlineDate;
-
-    //Дата окончание рассмотрения заявки
-    private String endDateOfApplicationConsideration;
-
-    //Дата аукциона
-    private String auctionDate;
-
-    //Элетронная площадка
-    private String electronicPlatform;
-
-    //Статус заявки
-    private ApplicationStatusEnum applicationStatusEnum;
-
-    //Причина отклонения заявки
-    private String reasonForRejectionOfApplication;
-
-    //Размер обеспечения заявки
-    private double amountOfApplicationEnsuring;
-
-    //Размер обеспечения контракта
-    private double amountOfContractEnsuring;
-
-    //Размер обеспечение контракта перечисленные заказчику
-    private double amountOfContractEnsuringListedToCustomer;
-
-    // Победитель аукциона
-    private String auctionWinner;
-
-    //Ссылка на общем диске
-    private String folderOnDisk;
-
-    //Комментарии
-    private String comments;
-
-    //Ответственный менеджер
-    private Employee employee;
-
-
     // Информация по заказчику
+
     //    Наименование заказчика
     private String nameCustomer;
 
@@ -80,7 +46,43 @@ public class CreateFormApplication {
     //    Город заказчика
     private String cityCustomer;
 
+    //Дата окончания подачи заявки
+    private String applicationDeadlineDate;
+
+    //Дата аукциона
+    private String auctionDate;
+
+    //Размер обеспечения заявки
+    private double amountOfApplicationEnsuring;
+
+    //Элетронная площадка
+    private String electronicPlatform;
+
+
+    //Ссылка на общем диске
+    private String folderOnDisk;
+
+    //Ответственный менеджер
+    private Employee employee;
+
+    //Комментарии
+    private String comments;
+
+
+    //Статус заявки
+    private ApplicationStatusEnum applicationStatusEnum;
+
+    //Причина отклонения заявки
+    private String reasonForRejectionOfApplication;
+
+
+    // Победитель аукциона
+    private String auctionWinner;
+
+
+
     //Информация по контракту
+
     //Номер подписаного контракта
     private String numberOfSignedContract;
 
@@ -111,10 +113,26 @@ public class CreateFormApplication {
     //Контактный Email по контракту
     private String contactEmail;
 
+    //Размер обеспечения контракта
+    private double amountOfContractEnsuring;
+
+    //Размер обеспечение контракта перечисленные заказчику
+    private double amountOfContractEnsuringListedToCustomer;
+
+    //Услович поставки
+    private String termsOfDelivery;
+
+
+    //Cрок годности товара на момент поставки
+    private String shelfLifeOfProductAtTimeOfDelivery;
+
+    //Статус контракта
+    private ContractStatusEnum contractStatusEnum;
+
     //Получение объекта календаря с временем посещения.
     @SneakyThrows
     public Timestamp getTime(String date) {
-        if (date == null) {
+        if (date == null|| date.contains("")) {
             date = "1987-01-01 00:00:00";
             return Timestamp.valueOf(date);
         }

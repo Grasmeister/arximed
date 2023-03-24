@@ -20,17 +20,15 @@
 
         </createTable>
 
-<!--        <insert tableName="contract">-->
+<!--        <insert tableName="customer">-->
 <!--            <column name="id">1</column>-->
-<!--            <column name="contract_id" >124231423411</column>-->
-<!--            <column name="contract_amount" >12341324111</column>-->
-<!--            <column name="purchase_amount" >12341234132411</column>-->
-<!--            <column name="date_auction" >21.02.2023</column>-->
-<!--            <column name="contract_end_date" >21.02.2021</column>-->
-<!--            <column name="status" >ZAPOLNENIE</column>-->
-<!--            <column name="client_id" >2</column>-->
-<!--            <column name="employee_id" >1</column>-->
+<!--            <column name="name_customer" > ГУП МОСГОРТРАНС</column>-->
+<!--            <column name="inn_customer" >12341324111</column>-->
+<!--            <column name="city_customer" >Москва</column>-->
 <!--        </insert>-->
+
+
+
 <!--        <insert tableName="contract">-->
 <!--            <column name="id">2</column>-->
 <!--            <column name="contract_id" >124231423422</column>-->

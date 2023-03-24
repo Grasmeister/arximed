@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01
+    Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/parts/header :: common_header(~{::title},~{::link})">
+    <title>Manager</title>
+</head>
+<body>
+<!--menu-->
+
+<div th:replace="~{/parts/header :: content}"></div>
+<div th:replace="~{/parts/menu :: menutoadmin}"></div>
+<!--Konteiner-->
+<div class="container my-3">
+    <div class="row">
+        <div class="col-sm">
+            <div class="container">
+                <h3 th:text="${'Контракт № ' +  contract.getNumberOfSignedContract()}"></h3>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="col-4 align-self-end">
+                <button class="btn btn-primary">
+                    <a class="nav-link-bottom"
+                       th:href="@{/admin/listContract}">Назад</a>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<table class="table ">
+    <tbody>
+    <tr>
+        <th class="col-6" scope="row">Номер подписаного контракта</th>
+        <td class="col-6" th:text="${contract.getNumberOfSignedContract() }"></td>
+    </tr>
+    <tr>
+        <th class="col-6" scope="row">Дата подписания контракта</th>
+        <td class="col-6" th:text="${contract.getDateOfContractSigning()}"></td>
+    </tr>
+    <tr>
+        <th class="col-6" scope="row">Цена контракта</th>
+        <td class="col-6" th:text="${contract.getContractPrice() }"></td>
+    </tr>
+    <tr>
+        <th class="col-6" scope="row">Срок поставки товара</th>
+        <td class="col-6" th:text="${contract.getDeliveryTimeOfProduct() }"></td>
+    </tr>
+    <tr>
+        <th class="col-6" scope="row">Срок исполнения контракта</th>
+        <td class="col-6" th:text="${contract.getContractExecutionPeriod()}"></td>
+    </tr>
+    <tr>
+        <th class="col-6" scope="row">Место поставки товара</th>
+        <td class="col-6" th:text="${contract.getPlaceOfDeliveryOfProduct()}"></td>
+    </tr>
+    <tr>
+        <th class="col-6" scope="row">Контактное лицо ФИО</th>
+        <td class="col-6" th:text="${contract.getContactPerson()}"></td>
+    </tr>
+    <tr>
+        <th class="col-6" scope="row">Контактный телефон по контракту</th>
+        <td class="col-6" th:text="${contract.getContactPhone()}"></td>
+    </tr>
+    <tr>
+        <th class="col-6" scope="row">Контактный Email по контракту</th>
+        <td class="col-6" th:text="${contract.getContactEmail()}"></td>
+    </tr>
+
+    <tr>
+        <th class="col-6" scope="row">Размер обеспечения контракта</th>
+        <td class="col-6" th:text="${contract.getAmountOfContractEnsuring()}"></td>
+    </tr>
+    <tr>
+        <th class="col-6" scope="row">Размер обеспечение контракта перечисленные заказчику</th>
+        <td class="col-6" th:text="${contract.getAmountOfContractEnsuringListedToCustomer()}"></td>
+    </tr>
+    <tr>
+        <th class="col-6" scope="row">Статус контракта</th>
+        <td class="col-6" th:text="${contract.getContractStatusEnum()}"></td>
+    </tr>
+    <tr>
+        <th class="col-6" scope="row">Услович поставки</th>
+        <td class="col-6" th:text="${contract.getTermsOfDelivery()}"></td>
+    </tr>
+    <tr>
+        <th class="col-6" scope="row">Cрок годности товара на момент поставки</th>
+        <td class="col-6" th:text="${contract.getShelfLifeOfProductAtTimeOfDelivery()}"></td>
+    </tr>
+
+
+    </tbody>
+</table>
+
+
+<!--Footer-->
+<div th:replace="~{/parts/footer :: content}"></div>
+<div th:replace="~{/parts/parts :: links}"></div>
+</body>
+</html>

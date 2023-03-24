@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface EmployeeEntityRepository extends JpaRepository<Employee, Integer> {
+
+    Employee loadEmployeeByLogin(String login);
 }

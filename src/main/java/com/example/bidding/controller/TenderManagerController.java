@@ -2,12 +2,10 @@ package com.example.bidding.controller;
 
 import com.example.bidding.enums.ApplicationStatusEnum;
 import com.example.bidding.enums.ContractStatusEnum;
-import com.example.bidding.enums.RoleEnum;
 import com.example.bidding.model.application.Application;
 import com.example.bidding.model.client.Customer;
 import com.example.bidding.model.contract.ContractNew;
 import com.example.bidding.model.createForm.CreateFormApplication;
-import com.example.bidding.model.employee.EmployeeForm;
 import com.example.bidding.service.ApplicationService;
 import com.example.bidding.service.ContractNewService;
 import com.example.bidding.service.CustomerService;
@@ -24,8 +22,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.Arrays;
 
 @Controller
-@RequestMapping("/director")
-public class DirectorController {
+@RequestMapping("/tenderManager")
+public class TenderManagerController {
 
 
     private final ContractNewService contractNewService;
@@ -39,8 +37,8 @@ public class DirectorController {
     //Атрибут модели для хранения списка ошибок.
     public static final String FORM_ERROR_ATTR = "errorsList";
 
-    public DirectorController(ContractNewService contractNewService, CustomerService customerService,
-                           EmployeeService employeeService, ApplicationService applicationService) {
+    public TenderManagerController(ContractNewService contractNewService, CustomerService customerService,
+                                   EmployeeService employeeService, ApplicationService applicationService) {
         this.contractNewService = contractNewService;
         this.customerService = customerService;
         this.employeeService = employeeService;
@@ -49,74 +47,16 @@ public class DirectorController {
 
     @GetMapping("/")
     public String index() {
-        return "/director/index";
+        return "/tenderManager/index";
     }
 
-    // Создание и просмотр сотрудников
-    @GetMapping("/createEmployee")
-    public String createFormEmployee(final Model model) {
-        model.addAttribute("roleList", Arrays.asList(RoleEnum.values()));
-        return "/director/createEmployee";
-    }
-
-
-    @PostMapping("/createEmployee")
-    public String createFormEmployeeProcessing(@ModelAttribute final EmployeeForm form,
-                                               final BindingResult bindingResult,
-                                               final Model model) {
-        if (bindingResult.hasErrors()) {
-            model.addAttribute(
-                    FORM_ERROR_ATTR,
-                    bindingResult.getAllErrors()
-            );
-            return createFormEmployee(model);
-        }
-
-        employeeService.createEmployee(form);
-
-        return "redirect:/director/list-employees";
-    }
-
-    @GetMapping("/list-employees")
-    public String listEmployee(final Model model) {
-        model.addAttribute("employees", employeeService.findAll());
-        return "/director/list-employees";
-    }
 // Создание и просмотр заявок
 
     @GetMapping("/listAplication")
     public String listApplication(final Model model) {
         model.addAttribute("aplications", applicationService.listAll());
-        return "/director/listAplication";
+        return "/tenderManager/listAplication";
     }
-
-    @GetMapping("/createApplication")
-    public String createFormApplication(final Model model) {
-        model.addAttribute("applicationStatusList", Arrays.asList(ApplicationStatusEnum.values()));
-        model.addAttribute("employees", employeeService.findAll());
-        return "/director/createApplication";
-    }
-
-    //Получаем форму  с предварительной валидацией.
-    @PostMapping("/createApplication")
-    public String createFormApplicationProcessing(
-            @ModelAttribute final CreateFormApplication applicationForm,
-            final BindingResult bindingResult,
-            final Model model) {
-
-        if (bindingResult.hasErrors()) {
-            model.addAttribute(
-                    FORM_ERROR_ATTR,
-                    bindingResult.getAllErrors()
-            );
-            return createFormApplication(model);
-        }
-        ContractNew contractNew = contractNewService.createContract(applicationForm);
-        Customer customer = customerService.createCustomer(applicationForm);
-        applicationService.createApplication(applicationForm, customer, contractNew);
-        return "redirect:/director/listAplication";
-    }
-
 
     @GetMapping("/aplication/{id}")
     public String viewApplication(@PathVariable int id, final Model model) {
@@ -129,7 +69,7 @@ public class DirectorController {
         model.addAttribute("contract", application.getContractNew());
         model.addAttribute("employee", application.getEmployee());
         model.addAttribute("contractStatus", application.getContractNew().getContractStatusEnum().name());
-        return "/director/aplication";
+        return "/tenderManager/aplication";
     }
 
     @GetMapping("aplication/{id}/editApplication")
@@ -137,7 +77,7 @@ public class DirectorController {
         model.addAttribute("applicationStatusList", Arrays.asList(ApplicationStatusEnum.values()));
         model.addAttribute("aplication", applicationService.findById(id));
 
-        return "/director/editApplication";
+        return "/tenderManager/editApplication";
     }
 
     @PostMapping("/aplication/{id}/editApplication")
@@ -159,7 +99,7 @@ public class DirectorController {
 
         applicationService.updateApplication(applicationForm, application);
 
-        return "redirect:/director/aplication/{id}";
+        return "redirect:/tenderManager/aplication/{id}";
     }
 
     @GetMapping("/listContract")
@@ -167,7 +107,7 @@ public class DirectorController {
 
         model.addAttribute("listContract", contractNewService.listAllActiveContract());
 
-        return "director/listContract";
+        return "tenderManager/listContract";
     }
 
 
@@ -176,7 +116,7 @@ public class DirectorController {
 
         model.addAttribute("contract", contractNewService.findById(id));
 
-        return "director/viewContract";
+        return "tenderManager/viewContract";
     }
 
     @GetMapping("/aplication/{id}/updateContract")
@@ -187,7 +127,7 @@ public class DirectorController {
 
         model.addAttribute("aplication", application);
         model.addAttribute("contractStatus", Arrays.asList(ContractStatusEnum.values()));
-        return "/director/updateContract";
+        return "/tenderManager/updateContract";
     }
 
     @PostMapping("/aplication/{id}/updateContract")
@@ -204,8 +144,7 @@ public class DirectorController {
         }
         contractNewService.updateContract(applicationForm, applicationService.findById(id).getContractNew());
 
-        return "redirect:/director/aplication/{id}";
+        return "redirect:/tenderManager/aplication/{id}";
     }
-
 
 }

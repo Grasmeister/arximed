@@ -35,6 +35,10 @@ public class Application {
     @Column(name = "initial_maximum_price")
     private double initialMaximumPrice;
 
+    //Закупочная цена
+    @Column(name = "purchase_price")
+    private double purchasePrice;
+
     //Предмет закупки
     @Column(name = "product_purchase")
     private String productPurchase;
@@ -43,9 +47,9 @@ public class Application {
     @Column(name = "application_deadline_date")
     private Timestamp applicationDeadlineDate;
 
-    //Дата окончание рассмотрения заявки
-    @Column(name = "end_date_of_application_consideration")
-    private Timestamp endDateOfApplicationConsideration;
+//    //Дата окончание рассмотрения заявки
+//    @Column(name = "end_date_of_application_consideration")
+//    private Timestamp endDateOfApplicationConsideration;
 
     //Дата аукциона
     @Column(name = "auction_date")
@@ -68,13 +72,13 @@ public class Application {
     @Column(name = "amount_of_application_ensuring")
     private double amountOfApplicationEnsuring;
 
-    //Размер обеспечения контракта
-    @Column(name = "amount_of_contract_ensuring")
-    private double amountOfContractEnsuring;
-
-    //Размер обеспечение контракта перечисленные заказчику
-    @Column(name = "amount_of_contract_ensuring_listed_to_customer")
-    private double amountOfContractEnsuringListedToCustomer;
+//    //Размер обеспечения контракта
+//    @Column(name = "amount_of_contract_ensuring")
+//    private double amountOfContractEnsuring;
+//
+//    //Размер обеспечение контракта перечисленные заказчику
+//    @Column(name = "amount_of_contract_ensuring_listed_to_customer")
+//    private double amountOfContractEnsuringListedToCustomer;
 
     // Победитель аукциона
     @Column(name = "auction_winner")

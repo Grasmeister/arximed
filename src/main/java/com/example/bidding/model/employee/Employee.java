@@ -38,4 +38,14 @@ public class Employee {
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
     private RoleEnum roleEnum;
+
+    /**
+     * Логин.
+     */
+    private String login;
+
+    /**
+     * Пароль.
+     */
+    private String password;
 }

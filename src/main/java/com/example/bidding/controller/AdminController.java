@@ -1,6 +1,7 @@
 package com.example.bidding.controller;
 
 import com.example.bidding.enums.ApplicationStatusEnum;
+import com.example.bidding.enums.ContractStatusEnum;
 import com.example.bidding.enums.RoleEnum;
 import com.example.bidding.model.application.Application;
 import com.example.bidding.model.client.Customer;
@@ -38,7 +39,8 @@ public class AdminController {
     //Атрибут модели для хранения списка ошибок.
     public static final String FORM_ERROR_ATTR = "errorsList";
 
-    public AdminController(ContractNewService contractNewService, CustomerService customerService, EmployeeService employeeService, ApplicationService applicationService) {
+    public AdminController(ContractNewService contractNewService, CustomerService customerService,
+                           EmployeeService employeeService, ApplicationService applicationService) {
         this.contractNewService = contractNewService;
         this.customerService = customerService;
         this.employeeService = employeeService;
@@ -118,14 +120,15 @@ public class AdminController {
 
     @GetMapping("/aplication/{id}")
     public String viewApplication(@PathVariable int id, final Model model) {
+
         Application application = applicationService.findById(id);
         ContractNew contractNew = application.getContractNew();
         Customer customer = application.getCustomer();
         model.addAttribute("aplication", application);
-        model.addAttribute("customer", customer);
-        model.addAttribute("contract", contractNew);
+        model.addAttribute("customer", application.getCustomer());
+        model.addAttribute("contract", application.getContractNew());
         model.addAttribute("employee", application.getEmployee());
-
+        model.addAttribute("contractStatus", application.getContractNew().getContractStatusEnum().name());
         return "/admin/aplication";
     }
 
@@ -139,7 +142,7 @@ public class AdminController {
 
     @PostMapping("/aplication/{id}/editApplication")
     public String viewOrUpdateApplicationProcessing(
-            @PathVariable (value = "id") int id,
+            @PathVariable(value = "id") int id,
             @ModelAttribute final CreateFormApplication applicationForm,
             final BindingResult bindingResult,
             final Model model) {
@@ -149,12 +152,57 @@ public class AdminController {
                     FORM_ERROR_ATTR,
                     bindingResult.getAllErrors()
             );
+
             return "/aplication/{id}/editApplication";
         }
         Application application = applicationService.findById(id);
 
-        ContractNew contractNew = contractNewService.updateContract(applicationForm, application.getContractNew());
-        applicationService.updateApplication(applicationForm, contractNew, application);
+        applicationService.updateApplication(applicationForm, application);
+
+        return "redirect:/admin/aplication/{id}";
+    }
+
+    @GetMapping("/listContract")
+    public String listContract(final Model model) {
+
+        model.addAttribute("listContract", contractNewService.listAllActiveContract());
+
+        return "admin/listContract";
+    }
+
+
+    @GetMapping("/listContract/{id}")
+    public String viewContract(@PathVariable(value = "id") int id, final Model model) {
+
+        model.addAttribute("contract", contractNewService.findById(id));
+
+        return "admin/viewContract";
+    }
+
+    @GetMapping("/aplication/{id}/updateContract")
+    public String updateContract(@PathVariable(value = "id") int id, final Model model) {
+
+        Application application = applicationService.findById(id);
+        model.addAttribute("contract", application.getContractNew());
+
+        model.addAttribute("aplication", application);
+        model.addAttribute("contractStatus", Arrays.asList(ContractStatusEnum.values()));
+        return "/admin/updateContract";
+    }
+
+    @PostMapping("/aplication/{id}/updateContract")
+    public String updateContractProcessing(@PathVariable(value = "id") int id,
+                                           @ModelAttribute final CreateFormApplication applicationForm,
+                                           final BindingResult bindingResult,
+                                           final Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute(
+                    FORM_ERROR_ATTR,
+                    bindingResult.getAllErrors()
+            );
+            return "/aplication/{id}/updateContract";
+        }
+        contractNewService.updateContract(applicationForm, applicationService.findById(id).getContractNew());
 
         return "redirect:/admin/aplication/{id}";
     }

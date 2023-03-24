@@ -9,7 +9,7 @@
 
     <!-- Версионирование базы данных для UserService -->
 
-    <changeSet id="userService_002_create_contract_table" author="taranenko">
+    <changeSet id="userService_022_create_contract_table" author="taranenko">
         <createTable tableName="contract">
             <column name="id" type="INT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>

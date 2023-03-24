@@ -17,7 +17,7 @@
             <column name="number_of_signed_contract" type="VARCHAR(255)"/>
             <column name="date_of_contract_signing" type="DATETIME"/>
             <column name="contract_price" type="DOUBLE"/>
-            <column name="ensuring_refund" type="VARCHAR(255)"/>
+<!--            <column name="ensuring_refund" type="VARCHAR(255)"/>-->
             <column name="delivery_time_of_product" type="INT"/>
             <column name="contract_execution_period" type="DATETIME"/>
             <column name="place_of_delivery_of_product" type="VARCHAR(255)"/>
@@ -25,52 +25,54 @@
             <column name="contact_phone" type="BIGINT"/>
             <column name="contact_email" type="VARCHAR(255)"/>
 
-<!--            private int id;-->
-<!--            @Column(name = "number_of_signed_contract")            private String numberOfSignedContract = "-";-->
-<!--            @Column(name = "date_of_contract_signing")            private Timestamp dateOfContractSigning = getTime();-->
-<!--            @Column(name = "contract_price")            private double contractPrice = 0.00;-->
-<!--            @Column(name = "ensuring_refund")            private String ensuringRefund = "-";-->
-<!--            @Column(name = "delivery_time_of_product")            private int deliveryTimeOfProduct = 0;-->
-<!--            @Column(name = "contract_execution_period")            private Timestamp contractExecutionPeriod = getTime();-->
-<!--            @Column(name = "place_of_delivery_of_product")            private String placeOfDeliveryOfProduct = "-";-->
-<!--            @Column(name = "contact_person")            private String contactPerson = "-";-->
-<!--            @Column(name = "contact_phone")            private long contactPhone = 0L;-->
-<!--            @Column(name = "contact_email")            private String contactEmail = "-";-->
+            <column name="amount_of_contract_ensuring" type="DOUBLE"/>
+            <column name="amount_of_contract_ensuring_listed_to_customer" type="DOUBLE"/>
+            <column name="contract_status" type="VARCHAR(255)"/>
+            <column name="terms_of_delivery" type="VARCHAR(255)"/>
+            <column name="shelf_life_of_product_at_time_of_delivery" type="VARCHAR(255)"/>
+
         </createTable>
 
-<!--        <insert tableName="contract">-->
-<!--            <column name="id">1</column>-->
-<!--            <column name="contract_id" >124231423411</column>-->
-<!--            <column name="contract_amount" >12341324111</column>-->
-<!--            <column name="purchase_amount" >12341234132411</column>-->
-<!--            <column name="date_auction" >21.02.2023</column>-->
-<!--            <column name="contract_end_date" >21.02.2021</column>-->
-<!--            <column name="status" >ZAPOLNENIE</column>-->
-<!--            <column name="client_id" >2</column>-->
-<!--            <column name="employee_id" >1</column>-->
-<!--        </insert>-->
-<!--        <insert tableName="contract">-->
-<!--            <column name="id">2</column>-->
-<!--            <column name="contract_id" >124231423422</column>-->
-<!--            <column name="contract_amount" >12341324122</column>-->
-<!--            <column name="purchase_amount" >12341234132422</column>-->
-<!--            <column name="date_auction" >22.02.2023</column>-->
-<!--            <column name="contract_end_date" >22.02.2021</column>-->
-<!--            <column name="status" >ISPOLNENIE</column>-->
-<!--            <column name="client_id" >1</column>-->
-<!--            <column name="employee_id" >2</column>-->
-<!--        </insert>-->
-<!--        <insert tableName="contract">-->
-<!--            <column name="id">3</column>-->
-<!--            <column name="contract_id" >124231423433</column>-->
-<!--            <column name="contract_amount" >12341324133</column>-->
-<!--            <column name="purchase_amount" >12341234132433</column>-->
-<!--            <column name="date_auction" >23.02.2023</column>-->
-<!--            <column name="contract_end_date" >23.02.2021</column>-->
-<!--            <column name="status" >PODACHA</column>-->
-<!--            <column name="client_id" >1</column>-->
-<!--            <column name="employee_id" >1</column>-->
-<!--        </insert>-->
+        <!--        <insert tableName="contract">-->
+        <!--            <column name="id">1</column>-->
+        <!--            <column name="number_of_signed_contract" >124231423411</column>-->
+        <!--            <column name="date_of_contract_signing" >21.02.2023</column>-->
+        <!--            <column name="contract_price" >1500000,00</column>-->
+        <!--            <column name="ensuring_refund" >чтотот надо написать</column>-->
+        <!--            <column name="delivery_time_of_product" >150</column>-->
+        <!--            <column name="contract_execution_period" >21.12.2023</column>-->
+        <!--            <column name="place_of_delivery_of_product" >чтотот надо написать</column>-->
+        <!--            <column name="contact_person" >Сидорова Ирина Львовна</column>-->
+        <!--            <column name="contact_phone" >79269269262</column>-->
+        <!--            <column name="contact_email" >email@email.ru</column>-->
+        <!--            <column name="amount_of_contract_ensuring" >1500,00</column>-->
+        <!--            <column name="amount_of_contract_ensuring_listed_to_customer" >1500.00</column>-->
+        <!--            <column name="contract_status" >CONTRACT_CREATED</column>-->
+        <!--        </insert>-->
+
+
+        <!--        <insert tableName="contract">-->
+        <!--            <column name="id">2</column>-->
+        <!--            <column name="contract_id" >124231423422</column>-->
+        <!--            <column name="contract_amount" >12341324122</column>-->
+        <!--            <column name="purchase_amount" >12341234132422</column>-->
+        <!--            <column name="date_auction" >22.02.2023</column>-->
+        <!--            <column name="contract_end_date" >22.02.2021</column>-->
+        <!--            <column name="status" >ISPOLNENIE</column>-->
+        <!--            <column name="client_id" >1</column>-->
+        <!--            <column name="employee_id" >2</column>-->
+        <!--        </insert>-->
+        <!--        <insert tableName="contract">-->
+        <!--            <column name="id">3</column>-->
+        <!--            <column name="contract_id" >124231423433</column>-->
+        <!--            <column name="contract_amount" >12341324133</column>-->
+        <!--            <column name="purchase_amount" >12341234132433</column>-->
+        <!--            <column name="date_auction" >23.02.2023</column>-->
+        <!--            <column name="contract_end_date" >23.02.2021</column>-->
+        <!--            <column name="status" >PODACHA</column>-->
+        <!--            <column name="client_id" >1</column>-->
+        <!--            <column name="employee_id" >1</column>-->
+        <!--        </insert>-->
 
 
         <!--        <rollback>-->

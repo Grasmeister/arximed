@@ -18,6 +18,11 @@ public class EmployeeService {
         this.employeeEntityRepository = employeeEntityRepository;
     }
 
+    public Employee loadEmployeeByLogin(String login) {
+
+        return employeeEntityRepository.loadEmployeeByLogin(login);
+    }
+
     public List<Employee> findAll() {
         return employeeEntityRepository.findAll();
     }
