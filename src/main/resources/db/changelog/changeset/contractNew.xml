@@ -17,14 +17,12 @@
             <column name="number_of_signed_contract" type="VARCHAR(255)"/>
             <column name="date_of_contract_signing" type="DATETIME"/>
             <column name="contract_price" type="DOUBLE"/>
-<!--            <column name="ensuring_refund" type="VARCHAR(255)"/>-->
-            <column name="delivery_time_of_product" type="INT"/>
+           <column name="delivery_time_of_product" type="INT"/>
             <column name="contract_execution_period" type="DATETIME"/>
             <column name="place_of_delivery_of_product" type="VARCHAR(255)"/>
             <column name="contact_person" type="VARCHAR(255)"/>
             <column name="contact_phone" type="BIGINT"/>
             <column name="contact_email" type="VARCHAR(255)"/>
-
             <column name="amount_of_contract_ensuring" type="DOUBLE"/>
             <column name="amount_of_contract_ensuring_listed_to_customer" type="DOUBLE"/>
             <column name="contract_status" type="VARCHAR(255)"/>
@@ -33,22 +31,23 @@
 
         </createTable>
 
-        <!--        <insert tableName="contract">-->
-        <!--            <column name="id">1</column>-->
-        <!--            <column name="number_of_signed_contract" >124231423411</column>-->
-        <!--            <column name="date_of_contract_signing" >21.02.2023</column>-->
-        <!--            <column name="contract_price" >1500000,00</column>-->
-        <!--            <column name="ensuring_refund" >чтотот надо написать</column>-->
-        <!--            <column name="delivery_time_of_product" >150</column>-->
-        <!--            <column name="contract_execution_period" >21.12.2023</column>-->
-        <!--            <column name="place_of_delivery_of_product" >чтотот надо написать</column>-->
-        <!--            <column name="contact_person" >Сидорова Ирина Львовна</column>-->
-        <!--            <column name="contact_phone" >79269269262</column>-->
-        <!--            <column name="contact_email" >email@email.ru</column>-->
-        <!--            <column name="amount_of_contract_ensuring" >1500,00</column>-->
-        <!--            <column name="amount_of_contract_ensuring_listed_to_customer" >1500.00</column>-->
-        <!--            <column name="contract_status" >CONTRACT_CREATED</column>-->
-        <!--        </insert>-->
+        <insert tableName="contract">
+            <column name="id">100</column>
+            <column name="number_of_signed_contract">124231423411</column>
+            <column name="date_of_contract_signing">21.02.2023</column>
+            <column name="contract_price">1500000.00</column>
+            <column name="delivery_time_of_product">150</column>
+            <column name="contract_execution_period">21.12.2023</column>
+            <column name="place_of_delivery_of_product">чтотот надо написать</column>
+            <column name="contact_person">Сидорова Ирина Львовна</column>
+            <column name="contact_phone">79269269262</column>
+            <column name="contact_email">email@email.ru</column>
+            <column name="amount_of_contract_ensuring">1500.00</column>
+            <column name="amount_of_contract_ensuring_listed_to_customer">1500.00</column>
+            <column name="contract_status">CONTRACT_CREATED</column>
+            <column name="terms_of_delivery">AC</column>
+            <column name="shelf_life_of_product_at_time_of_delivery">DC</column>
+        </insert>
 
 
         <!--        <insert tableName="contract">-->

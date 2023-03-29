@@ -18,29 +18,37 @@
             <column name="family" type="VARCHAR(128)"/>
             <column name="patronymic" type="VARCHAR(128)"/>
             <column name="role" type="VARCHAR(128)"/>
+            <column name="email" type="VARCHAR(128)"/>
+            <column name="password" type="VARCHAR(128)"/>
 
         </createTable>
 
         <insert tableName="employee">
-            <column name="id">1</column>
+            <column name="id">100</column>
             <column name="name">Иван</column>
             <column name="family">Иванов</column>
             <column name="patronymic">Иванович</column>
-            <column name="role">ADMIN</column>
+            <column name="role">ROLE_ADMIN</column>
+            <column name="email">ta@arxmed.ru</column>
+            <column name="password">admin</column>
         </insert>
 
         <insert tableName="employee">
-            <column name="id">2</column>
+            <column name="id">101</column>
             <column name="name">Петр</column>
             <column name="family">Петров</column>
             <column name="patronymic">Петрович</column>
-            <column name="role">MANAGER</column>
+            <column name="role">ROLE_MANAGER</column>
+            <column name="email">manager@arxmed.ru</column>
+            <column name="password">manager</column>
         </insert>
 
         <!--        <rollback>-->
         <!--            <dropTable tableName="event"/>-->
         <!--        </rollback>-->
     </changeSet>
+
+<!--    INSERT INTO `test`.`employee` (`id`, `email`, `family`, `name`, `password`, `patronymic`, `role`) VALUES ('1', 'ta@arxmed.ru', 'Иван', 'Иван', 'admin', 'Иван', 'ROLE_ADMIN');-->
 
 
 </databaseChangeLog>

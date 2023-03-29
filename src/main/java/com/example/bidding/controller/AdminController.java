@@ -8,10 +8,15 @@ import com.example.bidding.model.client.Customer;
 import com.example.bidding.model.contract.ContractNew;
 import com.example.bidding.model.createForm.CreateFormApplication;
 import com.example.bidding.model.employee.EmployeeForm;
+import com.example.bidding.model.product.CreateFormProduct;
+import com.example.bidding.model.product.Product;
+import com.example.bidding.model.product.Specification;
 import com.example.bidding.service.ApplicationService;
 import com.example.bidding.service.ContractNewService;
 import com.example.bidding.service.CustomerService;
 import com.example.bidding.service.EmployeeService;
+import com.example.bidding.service.ProductService;
+import com.example.bidding.service.SpecifictionService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,6 +27,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Arrays;
+import java.util.List;
 
 @Controller
 @RequestMapping("/admin")
@@ -36,15 +42,22 @@ public class AdminController {
 
     private final ApplicationService applicationService;
 
+    private final SpecifictionService specifictionService;
+
+    private final ProductService productService;
+
     //Атрибут модели для хранения списка ошибок.
     public static final String FORM_ERROR_ATTR = "errorsList";
 
     public AdminController(ContractNewService contractNewService, CustomerService customerService,
-                           EmployeeService employeeService, ApplicationService applicationService) {
+                           EmployeeService employeeService, ApplicationService applicationService,
+                           SpecifictionService specifictionService, ProductService productService) {
         this.contractNewService = contractNewService;
         this.customerService = customerService;
         this.employeeService = employeeService;
         this.applicationService = applicationService;
+        this.specifictionService = specifictionService;
+        this.productService = productService;
     }
 
     @GetMapping("/")
@@ -111,19 +124,77 @@ public class AdminController {
             );
             return createFormApplication(model);
         }
+
+        Specification specification = specifictionService.createSpecification(applicationForm.getApplicationId());
         ContractNew contractNew = contractNewService.createContract(applicationForm);
         Customer customer = customerService.createCustomer(applicationForm);
-        applicationService.createApplication(applicationForm, customer, contractNew);
+        applicationService.createApplication(applicationForm, customer, contractNew, specification);
         return "redirect:/admin/listAplication";
     }
+
+
+//    // Добавление продуктов в специф
+//
+//    @GetMapping("/aplication/{id}/addProduct")
+//    public String addProductFromSpecif(@PathVariable(value = "id") int id,
+//                                       final Model model) {
+//
+//        model.addAttribute("specif", applicationService.findById(id).getSpecif());
+//
+//        return "/admin/addProduct";
+//    }
+//
+//    @PostMapping("/aplication/{id}/addProduct")
+//    public String addProductFromSpecifProcessing(
+//            @PathVariable(value = "id") int id,
+//            @ModelAttribute final CreateFormProduct createFormProduct,
+//            final BindingResult bindingResult,
+//            final Model model) {
+//
+//        if (bindingResult.hasErrors()) {
+//            model.addAttribute(
+//                    FORM_ERROR_ATTR,
+//                    bindingResult.getAllErrors()
+//            );
+//            return "/aplication/{id}/addProduct";
+//        }
+//
+//        Specification specification = specifictionService.findById(applicationService.findById(id).getSpecif().getId());
+//
+//        Product product = productService.createProduct(createFormProduct);
+//        specification.getProducts().add(product);
+////        specification.addComment(product);
+//
+//        return "redirect:/admin/aplication/{id}/specification";
+//    }
+//
+//
+//    @GetMapping("/aplication/{id}/specification")
+//    public String getSpecification(@PathVariable(value = "id") int id,
+////                                   @PathVariable(value = "specifId") int specifId,
+//                                       final Model model) {
+//
+//        Specification specification = applicationService.findById(id).getSpecif();
+//        List<Product> productList = specification.getProducts();
+//        model.addAttribute("specif",specification);
+////        model.addAttribute("specificID", specifId);
+//        model.addAttribute("products", productList);
+//
+//        return "/admin/specification";
+//    }
+//// 99999999999999999999999999999
 
 
     @GetMapping("/aplication/{id}")
     public String viewApplication(@PathVariable int id, final Model model) {
 
         Application application = applicationService.findById(id);
-        ContractNew contractNew = application.getContractNew();
-        Customer customer = application.getCustomer();
+        if (application.getSpecif().getProducts().isEmpty()) {
+            model.addAttribute("product", "productNull");
+        } else {
+            model.addAttribute("product", application.getSpecif().getProducts());
+        }
+
         model.addAttribute("aplication", application);
         model.addAttribute("customer", application.getCustomer());
         model.addAttribute("contract", application.getContractNew());

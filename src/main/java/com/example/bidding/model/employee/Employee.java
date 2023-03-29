@@ -34,18 +34,17 @@ public class Employee {
     @Column(name = "patronymic")
     private String patronymic;
 
+
     //Должность
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
     private RoleEnum roleEnum;
 
-    /**
-     * Логин.
-     */
-    private String login;
+    //Логин
+    @Column(name = "email")
+    private String email;
 
-    /**
-     * Пароль.
-     */
+    //Пароль
+    @Column(name = "password")
     private String password;
 }

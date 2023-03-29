@@ -4,6 +4,7 @@ import com.example.bidding.enums.ApplicationStatusEnum;
 import com.example.bidding.model.client.Customer;
 import com.example.bidding.model.contract.ContractNew;
 import com.example.bidding.model.employee.Employee;
+import com.example.bidding.model.product.Specification;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -92,12 +93,19 @@ public class Application {
     @Column(name = "comments")
     private String comments;
 
+    //Менеджер
     @OneToOne
     private Employee employee;
 
+    //Заказчик
     @OneToOne
     private Customer customer;
 
+    //Контракт
     @OneToOne
     private ContractNew contractNew;
+
+    //Спецификация к контракту
+    @OneToOne
+    private Specification specif;
 }

@@ -8,24 +8,14 @@ import org.springframework.security.core.userdetails.User;
  * Расширяем стандартный контейнер авторизированного клиента.
  */
 @Getter
-public class UserDetailsId extends User {
+public class EmployeeDetailsId extends User {
 
-    /**
-     * client id.
-     */
-    private long userId;
 
-    /**
-     * Конструктор.
-     *
-     * @param id
-     * @param username
-     * @param password
-     * @param role
-     */
-    public UserDetailsId(final long id, final String username, final String password, final String role) {
+    private final int employeeId;
+
+    public EmployeeDetailsId(final int id, final String username, final String password, final String role) {
         super(username, password, AuthorityUtils.createAuthorityList(role));
-        userId = id;
+        employeeId = id;
     }
 
 }

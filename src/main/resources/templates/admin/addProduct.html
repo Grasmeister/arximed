@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01
+    Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/parts/header :: common_header(~{::title},~{::link})">
+    <title>Manager</title>
+</head>
+<body>
+<!--menu-->
+
+<div th:replace="~{/parts/header :: content}"></div>
+<div th:replace="~{/parts/menu :: menutoadmin}"></div>
+<!--Konteiner-->
+
+<div class="container my-3">
+    <div class="row">
+        <div class="col-sm">
+            <div class="container">
+                <h3>Добавление товаров в специф</h3>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="col-4 align-self-end">
+                <button class="btn btn-primary">
+                    <a class="nav-link-bottom"
+                       th:href="@{/admin/aplication/{id}(id=${id})}">Назад</a>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form method="post">
+
+    <div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="name">Наименование</label>
+                <input class="form-control" id="name" name="name" placeholder="Наименование">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="unitOfMeasurement">Ед. изм.</label>
+                <input class="form-control" id="unitOfMeasurement" placeholder="кг, шт и т.д." name="unitOfMeasurement">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="quantity">Кол-во</label>
+                <input class="form-control" id="quantity" placeholder="100" name="quantity">
+            </div>
+        </div>
+        <div class="form-group ">
+            <label for="technicalSpecification">Техническое задание</label>
+            <input class="form-control" id="technicalSpecification" placeholder="ТЗ..." name="technicalSpecification">
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label for="purchasePrice">Цена Закупки</label>
+                <input class="form-control" id="purchasePrice" name="purchasePrice" placeholder="111,00">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="purchaseAmount">Сумма Закупки</label>
+                <input class="form-control" id="purchaseAmount" name="purchaseAmount" placeholder="111,00">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="salePrice">Цена ПРОДАЖИ</label>
+                <input class="form-control" id="salePrice" placeholder="111,00"
+                       name="salePrice">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="saleAmount">Сумма ПРОДАЖИ</label>
+                <input class="form-control" id="saleAmount" placeholder="111,00"
+                       name="saleAmount">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label for="vat">НДС</label>
+                <input class="form-control" id="vat" placeholder="18"
+                       name="vat">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="delta">Дельта</label>
+                <input class="form-control" id="delta" placeholder="11,00"
+                       name="delta">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="countryOfOrigin">Страна происхождения</label>
+                <input class="form-control" id="countryOfOrigin" placeholder="Москва"
+                       name="countryOfOrigin">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="supplier">Поставщик</label>
+                <input class="form-control" id="supplier" placeholder="АМС"
+                       name="supplier">
+            </div>
+        </div>
+<!--        <div class="form-row">-->
+<!--            <div class="form-group  col-md-6">-->
+<!--                <label for="specif">Специф</label>-->
+<!--                <input class="form-control" id="specif" th:value="${specif.getId()}"-->
+<!--                       name="specif">-->
+<!--            </div>-->
+<!--        </div>-->
+    </div>
+
+
+    <div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="name1">Наименование</label>
+                <input class="form-control" id="name1" name="name1" placeholder="Наименование">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="unitOfMeasurement1">Ед. изм.</label>
+                <input class="form-control" id="unitOfMeasurement1" placeholder="кг, шт и т.д."
+                       name="unitOfMeasurement1">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="quantity1">Кол-во</label>
+                <input class="form-control" id="quantity1" placeholder="100" name="quantity1">
+            </div>
+        </div>
+        <div class="form-group ">
+            <label for="technicalSpecification1">Техническое задание</label>
+            <input class="form-control" id="technicalSpecification1" placeholder="ТЗ..." name="technicalSpecification1">
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label for="purchasePrice1">Цена Закупки</label>
+                <input class="form-control" id="purchasePrice1" name="purchasePrice1" placeholder="111,00">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="purchaseAmount1">Сумма Закупки</label>
+                <input class="form-control" id="purchaseAmount1" name="purchaseAmount1" placeholder="111,00">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="salePrice1">Цена ПРОДАЖИ</label>
+                <input class="form-control" id="salePrice1" placeholder="111,00"
+                       name="salePrice1">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="saleAmount1">Сумма ПРОДАЖИ</label>
+                <input class="form-control" id="saleAmount1" placeholder="111,00"
+                       name="saleAmount1">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label for="vat1">НДС</label>
+                <input class="form-control" id="vat1" placeholder="18"
+                       name="vat1">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="delta1">Дельта</label>
+                <input class="form-control" id="delta1" placeholder="11,00"
+                       name="delta1">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="countryOfOrigin1">Страна происхождения</label>
+                <input class="form-control" id="countryOfOrigin1" placeholder="Москва"
+                       name="countryOfOrigin1">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="supplier1">Поставщик</label>
+                <input class="form-control" id="supplier1" placeholder="АМС"
+                       name="supplier1">
+            </div>
+        </div>
+<!--        <div class="form-row">-->
+<!--            <div class="form-group  col-md-6">-->
+<!--                <label for="specif1">Специф</label>-->
+<!--                <input class="form-control" id="specif1" th:value="${specif.getId()}"-->
+<!--                       name="specif">-->
+<!--            </div>-->
+<!--        </div>-->
+    </div>
+
+
+
+    <button class="btn btn-primary" type="submit">Сохранить заявку</button>
+</form>
+
+<!--Footer-->
+<div th:replace="~{/parts/footer :: content}"></div>
+<div th:replace="~{/parts/parts :: links}"></div>
+</body>
+</html>

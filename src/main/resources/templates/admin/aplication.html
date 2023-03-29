@@ -108,6 +108,20 @@
 
     <div class="col-sm">
         <div class="container my-3">
+            <div th:switch="${product}">
+                <div class="container my-3" th:case="'productNull'">
+                    <h5>Заполнить спецификацию</h5>
+                </div>
+                <div class="container my-3" th:case="*">
+
+<!--                    <a class="nav-link-bottom"-->
+<!--                       th:href="@{/admin/aplication/{aplicationId}/specification/( aplicationId=${id} )}">-->
+                        Спецификация к заявке
+<!--                    </a>-->
+                </div>
+            </div>
+        </div>
+        <div class="container my-3">
             <h4>Информация по заказчику</h4>
         </div>
         <table class="table">

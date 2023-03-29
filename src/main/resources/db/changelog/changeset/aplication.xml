@@ -19,63 +19,67 @@
             <column name="purchase_price" type="DOUBLE"/>
             <column name="product_purchase" type="VARCHAR(255)"/>
             <column name="application_deadline_date" type="DATETIME"/>
-<!--            <column name="end_date_of_application_consideration" type="DATETIME"/>-->
+            <!--            <column name="end_date_of_application_consideration" type="DATETIME"/>-->
             <column name="auction_date" type="DATETIME"/>
             <column name="electronic_platform" type="VARCHAR(255)"/>
             <column name="application_status" type="VARCHAR(255)"/>
             <column name="reason_for_rejection_of_application" type="VARCHAR(255)"/>
             <column name="amount_of_application_ensuring" type="DOUBLE"/>
-<!--            <column name="amount_of_contract_ensuring" type="DOUBLE"/>-->
-<!--            <column name="amount_of_contract_ensuring_listed_to_customer" type="DOUBLE"/>-->
+            <!--            <column name="amount_of_contract_ensuring" type="DOUBLE"/>-->
+            <!--            <column name="amount_of_contract_ensuring_listed_to_customer" type="DOUBLE"/>-->
             <column name="auction_winner" type="VARCHAR(255)"/>
             <column name="folder_on_disk" type="VARCHAR(255)"/>
             <column name="comments" type="VARCHAR(255)"/>
             <column name="employee_id" type="INT"/>
             <column name="customer_id" type="INT"/>
             <column name="contract_new_id" type="INT"/>
+            <column name="specif_id" type="INT"/>
 
         </createTable>
 
-        <!--        <insert tableName="application">-->
-<!--            <column name="id">50</column>-->
-<!--            <column name="application_id" >0373200197817000192</column>-->
-<!--            <column name="initial_maximum_price" >577377,59</column>-->
-<!--            <column name="purchase_price" >0</column>-->
-<!--            <column name="product_purchase" >расходные материалы</column>-->
-<!--            <column name="application_deadline_date" >11.01.2018</column>-->
-<!--            <column name="auction_date" >18.01.2018</column>-->
-<!--            <column name="electronic_platform" >http://www.sberbank-ast.ru</column>-->
-<!--            <column name="application_status" >CLOSE</column>-->
-<!--            <column name="amount_of_application_ensuring" >5 773,78</column>-->
-<!--            <column name="auction_winner" >xz</column>-->
-<!--            <column name="folder_on_disk" >Z:\\Docs\\Тендеры\\ЛПУ\\Москва и МО\\Мытищи туберкулезная Безносов\\11.01.18 08-00 (0373200197817000192) Мытищинская Туберкулезная расходка НАШ</column>-->
-<!--            <column name="employee_id" >1</column>-->
-<!--            <column name="customer_id" >1</column>-->
-<!--            <column name="contract_new_id" >1</column>-->
-<!--        </insert>-->
+        <insert tableName="application">
+            <column name="id">50</column>
+            <column name="application_id">0373200197817000192</column>
+            <column name="initial_maximum_price">577377.59</column>
+            <column name="purchase_price">0</column>
+            <column name="product_purchase">расходные материалы</column>
+            <column name="application_deadline_date">11.01.2018</column>
+            <column name="auction_date">18.01.2018</column>
+            <column name="electronic_platform">http://www.sberbank-ast.ru</column>
+            <column name="application_status">CLOSE</column>
+            <column name="amount_of_application_ensuring">5773.78</column>
+            <column name="auction_winner">xz</column>
+            <column name="folder_on_disk">Z:\\Docs\\Тендеры\\ЛПУ\\Москва и МО\\Мытищи туберкулезная Безносов\\11.01.18
+                08-00 (0373200197817000192) Мытищинская Туберкулезная расходка НАШ
+            </column>
+            <column name="employee_id">100</column>
+            <column name="customer_id">100</column>
+            <column name="contract_new_id">100</column>
+            <column name="specif_id">100</column>
+        </insert>
 
-<!--        <insert tableName="contract">-->
-<!--            <column name="id">2</column>-->
-<!--            <column name="contract_id" >124231423422</column>-->
-<!--            <column name="contract_amount" >12341324122</column>-->
-<!--            <column name="purchase_amount" >12341234132422</column>-->
-<!--            <column name="date_auction" >22.02.2023</column>-->
-<!--            <column name="contract_end_date" >22.02.2021</column>-->
-<!--            <column name="status" >ISPOLNENIE</column>-->
-<!--            <column name="client_id" >1</column>-->
-<!--            <column name="employee_id" >2</column>-->
-<!--        </insert>-->
-<!--        <insert tableName="contract">-->
-<!--            <column name="id">3</column>-->
-<!--            <column name="contract_id" >124231423433</column>-->
-<!--            <column name="contract_amount" >12341324133</column>-->
-<!--            <column name="purchase_amount" >12341234132433</column>-->
-<!--            <column name="date_auction" >23.02.2023</column>-->
-<!--            <column name="contract_end_date" >23.02.2021</column>-->
-<!--            <column name="status" >PODACHA</column>-->
-<!--            <column name="client_id" >1</column>-->
-<!--            <column name="employee_id" >1</column>-->
-<!--        </insert>-->
+        <!--        <insert tableName="contract">-->
+        <!--            <column name="id">2</column>-->
+        <!--            <column name="contract_id" >124231423422</column>-->
+        <!--            <column name="contract_amount" >12341324122</column>-->
+        <!--            <column name="purchase_amount" >12341234132422</column>-->
+        <!--            <column name="date_auction" >22.02.2023</column>-->
+        <!--            <column name="contract_end_date" >22.02.2021</column>-->
+        <!--            <column name="status" >ISPOLNENIE</column>-->
+        <!--            <column name="client_id" >1</column>-->
+        <!--            <column name="employee_id" >2</column>-->
+        <!--        </insert>-->
+        <!--        <insert tableName="contract">-->
+        <!--            <column name="id">3</column>-->
+        <!--            <column name="contract_id" >124231423433</column>-->
+        <!--            <column name="contract_amount" >12341324133</column>-->
+        <!--            <column name="purchase_amount" >12341234132433</column>-->
+        <!--            <column name="date_auction" >23.02.2023</column>-->
+        <!--            <column name="contract_end_date" >23.02.2021</column>-->
+        <!--            <column name="status" >PODACHA</column>-->
+        <!--            <column name="client_id" >1</column>-->
+        <!--            <column name="employee_id" >1</column>-->
+        <!--        </insert>-->
 
 
         <!--        <rollback>-->

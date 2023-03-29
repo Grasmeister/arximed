@@ -80,7 +80,6 @@ public class CreateFormApplication {
     private String auctionWinner;
 
 
-
     //Информация по контракту
 
     //Номер подписаного контракта
@@ -132,7 +131,7 @@ public class CreateFormApplication {
     //Получение объекта календаря с временем посещения.
     @SneakyThrows
     public Timestamp getTime(String date) {
-        if (date == null|| date.contains("")) {
+        if (date == null || date.contains("")) {
             date = "1987-01-01 00:00:00";
             return Timestamp.valueOf(date);
         }

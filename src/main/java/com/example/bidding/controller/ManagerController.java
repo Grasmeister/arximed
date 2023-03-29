@@ -94,25 +94,25 @@ public class ManagerController {
         return "/manager/createApplication";
     }
 
-    //Получаем форму  с предварительной валидацией.
-    @PostMapping("/createApplication")
-    public String createFormApplicationProcessing(
-            @ModelAttribute final CreateFormApplication applicationForm,
-            final BindingResult bindingResult,
-            final Model model) {
-
-        if (bindingResult.hasErrors()) {
-            model.addAttribute(
-                    FORM_ERROR_ATTR,
-                    bindingResult.getAllErrors()
-            );
-            return createFormApplication(model);
-        }
-        ContractNew contractNew = contractNewService.createContract(applicationForm);
-        Customer customer = customerService.createCustomer(applicationForm);
-        applicationService.createApplication(applicationForm, customer, contractNew);
-        return "redirect:/manager/listAplication";
-    }
+//    //Получаем форму  с предварительной валидацией.
+//    @PostMapping("/createApplication")
+//    public String createFormApplicationProcessing(
+//            @ModelAttribute final CreateFormApplication applicationForm,
+//            final BindingResult bindingResult,
+//            final Model model) {
+//
+//        if (bindingResult.hasErrors()) {
+//            model.addAttribute(
+//                    FORM_ERROR_ATTR,
+//                    bindingResult.getAllErrors()
+//            );
+//            return createFormApplication(model);
+//        }
+//        ContractNew contractNew = contractNewService.createContract(applicationForm);
+//        Customer customer = customerService.createCustomer(applicationForm);
+//        applicationService.createApplication(applicationForm, customer, contractNew);
+//        return "redirect:/manager/listAplication";
+//    }
 
 
     @GetMapping("/aplication/{id}")

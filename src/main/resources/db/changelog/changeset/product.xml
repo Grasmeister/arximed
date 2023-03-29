@@ -15,46 +15,41 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="name" type="VARCHAR(255)"/>
-            <column name="articular" type="VARCHAR(255)"/>
-            <column name="description" type="VARCHAR(255)"/>
-            <column name="quantity" type="INT(255)"/>
+            <!--            <column name="articular" type="VARCHAR(255)"/>-->
+            <column name="technical_specification" type="VARCHAR(255)"/>
             <column name="unit_of_measurement" type="VARCHAR(255)"/>
+            <column name="quantity" type="INT(255)"/>
+
+            <column name="purchase_price" type="DOUBLE"/>
+            <column name="purchase_amount" type="DOUBLE"/>
+            <column name="vat" type="INT"/>
+            <column name="sale_price" type="DOUBLE"/>
+            <column name="sale_amount" type="DOUBLE"/>
+            <column name="delta" type="DOUBLE"/>
+            <column name="country_of_origin" type="VARCHAR(255)"/>
+            <column name="supplier" type="VARCHAR(255)"/>
+<!--            <column name="specif_id" type="INT"/>-->
+
+
 
         </createTable>
 
-<!--        <insert tableName="application">-->
-<!--            <column name="id">1</column>-->
-<!--            <column name="contract_id" >124231423411</column>-->
-<!--            <column name="contract_amount" >12341324111</column>-->
-<!--            <column name="purchase_amount" >12341234132411</column>-->
-<!--            <column name="date_auction" >21.02.2023</column>-->
-<!--            <column name="contract_end_date" >21.02.2021</column>-->
-<!--            <column name="status" >ZAPOLNENIE</column>-->
-<!--            <column name="client_id" >2</column>-->
-<!--            <column name="employee_id" >1</column>-->
-<!--        </insert>-->
-<!--        <insert tableName="contract">-->
-<!--            <column name="id">2</column>-->
-<!--            <column name="contract_id" >124231423422</column>-->
-<!--            <column name="contract_amount" >12341324122</column>-->
-<!--            <column name="purchase_amount" >12341234132422</column>-->
-<!--            <column name="date_auction" >22.02.2023</column>-->
-<!--            <column name="contract_end_date" >22.02.2021</column>-->
-<!--            <column name="status" >ISPOLNENIE</column>-->
-<!--            <column name="client_id" >1</column>-->
-<!--            <column name="employee_id" >2</column>-->
-<!--        </insert>-->
-<!--        <insert tableName="contract">-->
-<!--            <column name="id">3</column>-->
-<!--            <column name="contract_id" >124231423433</column>-->
-<!--            <column name="contract_amount" >12341324133</column>-->
-<!--            <column name="purchase_amount" >12341234132433</column>-->
-<!--            <column name="date_auction" >23.02.2023</column>-->
-<!--            <column name="contract_end_date" >23.02.2021</column>-->
-<!--            <column name="status" >PODACHA</column>-->
-<!--            <column name="client_id" >1</column>-->
-<!--            <column name="employee_id" >1</column>-->
-<!--        </insert>-->
+        <insert tableName="product">
+            <column name="id">100</column>
+            <column name="name">gdfsg</column>
+            <column name="technical_specification">12341324111.00</column>
+            <column name="unit_of_measurement">шт</column>
+            <column name="quantity">999</column>
+            <column name="purchase_price">99.00</column>
+            <column name="purchase_amount">99999.00</column>
+            <column name="vat">10</column>
+            <column name="sale_price">50.00</column>
+            <column name="sale_amount">50000.00</column>
+            <column name="delta">40000.00</column>
+            <column name="country_of_origin">rus</column>
+            <column name="supplier">marr</column>
+<!--            <column name="specif_id">100</column>-->
+        </insert>
 
 
         <!--        <rollback>-->

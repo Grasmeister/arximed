@@ -9,24 +9,19 @@
 
     <!-- Версионирование базы данных для UserService -->
 
-    <changeSet id="userService_003_create_customer_table" author="taranenko">
-        <createTable tableName="customer">
-            <column name="id" type="INT" autoIncrement="true">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
-            <column name="name_customer" type="VARCHAR(255)"/>
-            <column name="inn_customer" type="BIGINT"/>
-            <column name="city_customer" type="VARCHAR(255)"/>
+    <changeSet id="userService_001_create_specification_products_table" author="taranenko">
+        <createTable tableName="specification_products">
+
+            <column name="specification_id" type="INT"/>
+            <column name="products_id" type="INT"/>
 
         </createTable>
 
-        <insert tableName="customer">
-            <column name="id">100</column>
-            <column name="name_customer">ГУП МОСГОРТРАНС</column>
-            <column name="inn_customer">12341324111</column>
-            <column name="city_customer">Москва</column>
-        </insert>
+        <insert tableName="specification_products">
+            <column name="specification_id">100</column>
+            <column name="products_id">100</column>
 
+        </insert>
 
         <!--        <insert tableName="contract">-->
         <!--            <column name="id">2</column>-->

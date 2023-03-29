@@ -18,9 +18,13 @@ public class EmployeeService {
         this.employeeEntityRepository = employeeEntityRepository;
     }
 
-    public Employee loadEmployeeByLogin(String login) {
+//    public Employee getByLogin(String login) {
+//
+//        return employeeEntityRepository.getByLogin(login);
+//    }
 
-        return employeeEntityRepository.loadEmployeeByLogin(login);
+    public Employee findEmployeeByEmail(String email) {
+        return employeeEntityRepository.findEmployeeByEmail(email);
     }
 
     public List<Employee> findAll() {
@@ -35,6 +39,9 @@ public class EmployeeService {
         employee.setPatronymic(employeeForm.getPatronymic());
         employee.setFamily(employeeForm.getFamily());
         employee.setRoleEnum(Arrays.asList(RoleEnum.values()).get(employeeForm.getRoleEnum().ordinal()));
+        employee.setEmail(employeeForm.getLogin());
+
+        employee.setPassword(employeeForm.getPassword());//Необходимо зашифромать пароль.
 
         employeeEntityRepository.save(employee);
 

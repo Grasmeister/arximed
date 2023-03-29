@@ -7,5 +7,6 @@ public enum ApplicationStatusEnum {
     WIN,
     NEW;
 
-    ApplicationStatusEnum(){}
+    ApplicationStatusEnum() {
+    }
 }

@@ -40,7 +40,7 @@ public class DirectorController {
     public static final String FORM_ERROR_ATTR = "errorsList";
 
     public DirectorController(ContractNewService contractNewService, CustomerService customerService,
-                           EmployeeService employeeService, ApplicationService applicationService) {
+                              EmployeeService employeeService, ApplicationService applicationService) {
         this.contractNewService = contractNewService;
         this.customerService = customerService;
         this.employeeService = employeeService;
@@ -97,25 +97,25 @@ public class DirectorController {
         return "/director/createApplication";
     }
 
-    //Получаем форму  с предварительной валидацией.
-    @PostMapping("/createApplication")
-    public String createFormApplicationProcessing(
-            @ModelAttribute final CreateFormApplication applicationForm,
-            final BindingResult bindingResult,
-            final Model model) {
-
-        if (bindingResult.hasErrors()) {
-            model.addAttribute(
-                    FORM_ERROR_ATTR,
-                    bindingResult.getAllErrors()
-            );
-            return createFormApplication(model);
-        }
-        ContractNew contractNew = contractNewService.createContract(applicationForm);
-        Customer customer = customerService.createCustomer(applicationForm);
-        applicationService.createApplication(applicationForm, customer, contractNew);
-        return "redirect:/director/listAplication";
-    }
+//    //Получаем форму  с предварительной валидацией.
+//    @PostMapping("/createApplication")
+//    public String createFormApplicationProcessing(
+//            @ModelAttribute final CreateFormApplication applicationForm,
+//            final BindingResult bindingResult,
+//            final Model model) {
+//
+//        if (bindingResult.hasErrors()) {
+//            model.addAttribute(
+//                    FORM_ERROR_ATTR,
+//                    bindingResult.getAllErrors()
+//            );
+//            return createFormApplication(model);
+//        }
+//        ContractNew contractNew = contractNewService.createContract(applicationForm);
+//        Customer customer = customerService.createCustomer(applicationForm);
+//        applicationService.createApplication(applicationForm, customer, contractNew);
+//        return "redirect:/director/listAplication";
+//    }
 
 
     @GetMapping("/aplication/{id}")

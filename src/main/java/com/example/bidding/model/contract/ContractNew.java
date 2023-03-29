@@ -1,6 +1,5 @@
 package com.example.bidding.model.contract;
 
-import com.example.bidding.enums.ApplicationStatusEnum;
 import com.example.bidding.enums.ContractStatusEnum;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,43 +34,39 @@ public class ContractNew {
 
     //Номер подписаного контракта
     @Column(name = "number_of_signed_contract")
-    private String numberOfSignedContract;// = "-";
+    private String numberOfSignedContract;
 
     //Дата подписания контракта
     @Column(name = "date_of_contract_signing")
-    private Timestamp dateOfContractSigning;// = getTime();
+    private Timestamp dateOfContractSigning;
 
     //Цена контракта
     @Column(name = "contract_price")
-    private double contractPrice;// = 0.00;
-//
-//    //Возврат обеспечения
-//    @Column(name = "ensuring_refund")
-//    private String ensuringRefund;// = "-";
+    private double contractPrice;
 
     //Срок поставки товара
     @Column(name = "delivery_time_of_product")
-    private int deliveryTimeOfProduct;// = 0;
+    private int deliveryTimeOfProduct;
 
     //Срок исполнения контракта
     @Column(name = "contract_execution_period")
-    private Timestamp contractExecutionPeriod;// = getTime();
+    private Timestamp contractExecutionPeriod;
 
     //Место поставки товара
     @Column(name = "place_of_delivery_of_product")
-    private String placeOfDeliveryOfProduct;// = "-";
+    private String placeOfDeliveryOfProduct;
 
     //Контактное лицо ФИО
     @Column(name = "contact_person")
-    private String contactPerson;//  = "-";
+    private String contactPerson;
 
     //Контактный телефон по контракту
     @Column(name = "contact_phone")
-    private long contactPhone;//  = 0L;
+    private long contactPhone;
 
     //Контактный Email по контракту
     @Column(name = "contact_email")
-    private String contactEmail;//  = "-";
+    private String contactEmail;
 
     @SneakyThrows
     public Timestamp getTime() {
@@ -93,11 +88,11 @@ public class ContractNew {
     private ContractStatusEnum contractStatusEnum;
 
     //Услович поставки
-    @Column(name="terms_of_delivery")
+    @Column(name = "terms_of_delivery")
     private String termsOfDelivery;
 
     //Cрок годности товара на момент поставки
-    @Column(name="shelf_life_of_product_at_time_of_delivery")
+    @Column(name = "shelf_life_of_product_at_time_of_delivery")
     private String shelfLifeOfProductAtTimeOfDelivery;
 
 }

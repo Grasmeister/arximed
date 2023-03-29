@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01
+    Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/parts/header :: common_header(~{::title},~{::link})">
+    <title>Manager</title>
+</head>
+<body>
+<!--menu-->
+
+<div th:replace="~{/parts/header :: content}"></div>
+<div th:replace="~{/parts/menu :: menutoadmin}"></div>
+<!--Konteiner-->
+<div class="container my-3">
+    <div class="row">
+        <div class="col-sm">
+            <div class="container">
+                <h3 th:text="${'Спецификация к заявке № ' +  specif.getApplicationNumber}"></h3>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="col-2 align-self-end">
+                <button class="btn btn-primary">
+                    <a class="nav-link-bottom"
+                       th:href="@{/admin/aplication/{id}(id=${id})}">Назад</a>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<table class="table ">
+    <tbody>
+    <tr>
+        <th  scope="row">Наименование</th>
+        <th  scope="row">ТЗ</th>
+        <th  scope="row">Ед. изм.</th>
+        <th  scope="row">Кол-во</th>
+        <th  scope="row">Цена Закупки</th>
+        <th  scope="row">Сумма Закупки</th>
+        <th  scope="row">НДС</th>
+        <th  scope="row">Цена ПРОДАЖИ</th>
+        <th  scope="row">Сумма ПРОДАЖИ</th>
+        <th  scope="row">Дельта</th>
+        <th  scope="row">Производитель</th>
+        <th  scope="row">Поставщик</th>
+
+    </tr>
+    <tr th:each="product : ${products}">
+        <td  th:text="${product.getName() }"></td>
+        <td  th:text="${ product.getTechnicalSpecification()}"></td>
+        <td  th:text="${ product.getUnitOfMeasurement()}"></td>
+        <td  th:text="${ product.getQuantity()}"></td>
+        <td  th:text="${ product.getPurchasePrice()}"></td>
+        <td  th:text="${ product.getPurchaseAmount()}"></td>
+        <td  th:text="${ product.getVat()}"></td>
+        <td  th:text="${ product.getSalePrice()}"></td>
+        <td  th:text="${ product.getSaleAmount()}"></td>
+        <td  th:text="${product.getDelta() }"></td>
+        <td  th:text="${ product.getCountryOfOrigin()}"></td>
+        <td  th:text="${ product.getSupplier()}"></td>
+    </tr>
+
+
+
+    </tbody>
+</table>
+
+
+<!--Footer-->
+<div th:replace="~{/parts/footer :: content}"></div>
+<div th:replace="~{/parts/parts :: links}"></div>
+</body>
+</html>
