@@ -10,7 +10,6 @@ import org.springframework.security.core.userdetails.User;
 @Getter
 public class EmployeeDetailsId extends User {
 
-
     private final int employeeId;
 
     public EmployeeDetailsId(final int id, final String username, final String password, final String role) {

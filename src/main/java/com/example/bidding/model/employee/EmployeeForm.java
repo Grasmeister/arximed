@@ -4,8 +4,6 @@ import com.example.bidding.enums.RoleEnum;
 import lombok.Builder;
 import lombok.Getter;
 
-import javax.persistence.Column;
-
 @Getter
 @Builder
 public class EmployeeForm {

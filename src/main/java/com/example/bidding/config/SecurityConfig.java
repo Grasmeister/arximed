@@ -70,7 +70,7 @@ public class SecurityConfig {
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
-    return authenticationConfiguration.getAuthenticationManager();
+        return authenticationConfiguration.getAuthenticationManager();
     }
 //    @Bean
 //    public UserDetailsService userDetailsService(){
@@ -84,7 +84,7 @@ public class SecurityConfig {
 //                .password(passwordEncoder().encode("Q123!@")).roles("USER");
 //    }
 
-        @Bean
+    @Bean
     public PasswordEncoder passwordEncoder() {
 //        return new BCryptPasswordEncoder();
         return NoOpPasswordEncoder.getInstance();

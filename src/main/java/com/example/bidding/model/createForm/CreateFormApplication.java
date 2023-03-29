@@ -122,7 +122,7 @@ public class CreateFormApplication {
     private String termsOfDelivery;
 
 
-    //Cрок годности товара на момент поставки
+    //Срок годности товара на момент поставки
     private String shelfLifeOfProductAtTimeOfDelivery;
 
     //Статус контракта

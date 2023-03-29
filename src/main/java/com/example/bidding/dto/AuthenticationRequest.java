@@ -1,6 +1,5 @@
 package com.example.bidding.dto;
 
-import lombok.Generated;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

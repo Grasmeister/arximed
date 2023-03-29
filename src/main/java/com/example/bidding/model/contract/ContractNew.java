@@ -91,7 +91,7 @@ public class ContractNew {
     @Column(name = "terms_of_delivery")
     private String termsOfDelivery;
 
-    //Cрок годности товара на момент поставки
+    //Срок годности товара на момент поставки
     @Column(name = "shelf_life_of_product_at_time_of_delivery")
     private String shelfLifeOfProductAtTimeOfDelivery;
 

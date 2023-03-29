@@ -3,20 +3,12 @@ package com.example.bidding.model.product;
 import lombok.Builder;
 import lombok.Getter;
 
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
-
 @Getter
 @Builder
 public class CreateFormProduct {
 
     //Наименование
     private String name;
-
-//    //Артикул
-//    @Column(name = "articular")
-//    private String articular;
 
     //техническое задание
     private String technicalSpecification;

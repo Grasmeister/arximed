@@ -6,14 +6,14 @@ import com.example.bidding.repository.ProductEntityRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ProductService  {
-    private ProductEntityRepository productEntityRepository;
+public class ProductService {
+    private final ProductEntityRepository productEntityRepository;
 
-    public ProductService(ProductEntityRepository productEntityRepository){
+    public ProductService(ProductEntityRepository productEntityRepository) {
         this.productEntityRepository = productEntityRepository;
     }
 
-    public Product createProduct(CreateFormProduct formProduct){
+    public Product createProduct(CreateFormProduct formProduct) {
         Product product = new Product();
 
         product.setName(formProduct.getName());
@@ -28,7 +28,6 @@ public class ProductService  {
         product.setDelta(formProduct.getDelta());
         product.setCountryOfOrigin(formProduct.getCountryOfOrigin());
         product.setSupplier(formProduct.getSupplier());
-//        product.setSpecif(formProduct.getSpecif());
 
         return productEntityRepository.save(product);
     }

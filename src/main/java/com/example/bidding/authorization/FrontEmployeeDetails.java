@@ -1,6 +1,5 @@
 package com.example.bidding.authorization;
 
-import com.example.bidding.enums.RoleEnum;
 import com.example.bidding.model.employee.Employee;
 import com.example.bidding.service.EmployeeService;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,23 +24,7 @@ public class FrontEmployeeDetails implements UserDetailsService {
     }
 
     public UserDetails findEmployeeByEmail(String email) {
-
-        Employee employee = employeeService.findEmployeeByEmail(email);
-
-//        String em = email;
-
-//        Employee employee = new Employee();
-
-//        employee.setName("Anton");
-//        employee.setFamily("Taranenko");
-//        employee.setPatronymic("Serg");
-//        employee.setRoleEnum(RoleEnum.ROLE_ADMIN);
-//        employee.setPassword("password");
-//        employee.setEmail("ta@arxmed.ru");
-//        employee.setId(1);
-
-        return getEmployeeDetailsId(employee);
-
+        return loadUserByUsername(email);
     }
 
     private EmployeeDetailsId getEmployeeDetailsId(Employee employee) {

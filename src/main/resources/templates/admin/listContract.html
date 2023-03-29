@@ -15,48 +15,48 @@
 
 <div>
     <h2>Список контрактов:</h2>
-    <div >
+    <div>
         <table class="table" th:if="${listContract}">
             <thead>
             <tr>
                 <th scope="col">Номер подписаного контракта</th>
                 <th scope="col">Дата подписания контракта</th>
                 <th scope="col">Цена контракта</th>
-<!--                <th scope="col">Срок поставки товара</th>-->
+                <!--                <th scope="col">Срок поставки товара</th>-->
                 <th scope="col">Срок исполнения контракта</th>
                 <th scope="col">Место поставки товара</th>
-<!--                <th scope="col">Контактное лицо ФИО</th>-->
-<!--                <th scope="col">Контактный телефон по контракту</th>-->
-<!--                <th scope="col">Контактный Email по контракту</th>-->
-<!--                <th scope="col">Размер обеспечения контракта</th>-->
-<!--                <th scope="col">Размер обеспечение контракта перечисленные заказчику</th>-->
-<!--                <th scope="col">Статус контракта</th>-->
-<!--                <th scope="col">Услович поставки</th>-->
-<!--                <th scope="col">Cрок годности товара на момент поставки</th>-->
+                <!--                <th scope="col">Контактное лицо ФИО</th>-->
+                <!--                <th scope="col">Контактный телефон по контракту</th>-->
+                <!--                <th scope="col">Контактный Email по контракту</th>-->
+                <!--                <th scope="col">Размер обеспечения контракта</th>-->
+                <!--                <th scope="col">Размер обеспечение контракта перечисленные заказчику</th>-->
+                <!--                <th scope="col">Статус контракта</th>-->
+                <!--                <th scope="col">Услович поставки</th>-->
+                <!--                <th scope="col">Cрок годности товара на момент поставки</th>-->
 
             </tr>
             </thead>
             <tbody><!--th:if="${listContract}"-->
-            <tr  th:each="contract : ${listContract}">
+            <tr th:each="contract : ${listContract}">
 
-                <td >
+                <td>
                     <a class="nav-link" th:text="${contract.getNumberOfSignedContract()  }"
                        th:href="@{/admin/listContract/{contractId}(contractId=${contract.getId()})}"></a>
 
                 </td>
                 <td th:text="${contract.getDateOfContractSigning()  }"></td>
                 <td th:text="${contract.getContractPrice()  }"></td>
-<!--                <td th:text="${contract.getDeliveryTimeOfProduct()  }"></td>-->
+                <!--                <td th:text="${contract.getDeliveryTimeOfProduct()  }"></td>-->
                 <td th:text="${contract.getContractExecutionPeriod()  }"></td>
                 <td th:text="${contract.getPlaceOfDeliveryOfProduct()  }"></td>
-<!--                <td th:text="${contract.getContactPerson()  }"></td>-->
-<!--                <td th:text="${contract.getContactPhone()  }"></td>-->
-<!--                <td th:text="${contract.getContactEmail()  }"></td>-->
-<!--                <td th:text="${contract.getAmountOfContractEnsuring()  }"></td>-->
-<!--                <td th:text="${contract.getAmountOfContractEnsuringListedToCustomer()  }"></td>-->
-<!--                <td th:text="${contract.getContractStatusEnum()  }"></td>-->
-<!--                <td th:text="${contract.getTermsOfDelivery()  }"></td>-->
-<!--                <td th:text="${contract.getShelfLifeOfProductAtTimeOfDelivery()  }"></td>-->
+                <!--                <td th:text="${contract.getContactPerson()  }"></td>-->
+                <!--                <td th:text="${contract.getContactPhone()  }"></td>-->
+                <!--                <td th:text="${contract.getContactEmail()  }"></td>-->
+                <!--                <td th:text="${contract.getAmountOfContractEnsuring()  }"></td>-->
+                <!--                <td th:text="${contract.getAmountOfContractEnsuringListedToCustomer()  }"></td>-->
+                <!--                <td th:text="${contract.getContractStatusEnum()  }"></td>-->
+                <!--                <td th:text="${contract.getTermsOfDelivery()  }"></td>-->
+                <!--                <td th:text="${contract.getShelfLifeOfProductAtTimeOfDelivery()  }"></td>-->
             </tr>
 
             </tbody>

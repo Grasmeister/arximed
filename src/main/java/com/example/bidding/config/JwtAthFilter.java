@@ -1,7 +1,6 @@
 package com.example.bidding.config;
 
 import com.example.bidding.authorization.FrontEmployeeDetails;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,7 +17,6 @@ import java.io.IOException;
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 
 @Component
-//@RequiredArgsConstructor
 public class JwtAthFilter extends OncePerRequestFilter {
 
     private final FrontEmployeeDetails frontEmployeeDetails;
@@ -44,13 +42,13 @@ public class JwtAthFilter extends OncePerRequestFilter {
             return;
         }
         jwtToken = authHeader.substring(7);
-        
+
         userEmail = jwtUtils.extractUsername(jwtToken);
 
         if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = frontEmployeeDetails.findEmployeeByEmail((userEmail));
 
-            if (jwtUtils.isTokenValid(jwtToken, userDetails)) {
+            if (Boolean.TRUE.equals(jwtUtils.isTokenValid(jwtToken, userDetails))) {
                 UsernamePasswordAuthenticationToken authToken =
                         new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                 authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
@@ -58,7 +56,6 @@ public class JwtAthFilter extends OncePerRequestFilter {
             }
         }
         filterChain.doFilter(request, response);
-
 
     }
 }

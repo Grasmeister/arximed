@@ -15,7 +15,7 @@ import java.util.function.Function;
 @Controller
 public class JwtUtils {
 
-    private final String jwtSigningKey = "arximedSecterKey";
+    private static final String JWT_SIGNING_KEY = "arximedSecretKey";
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
@@ -36,7 +36,7 @@ public class JwtUtils {
     }
 
     private Claims extractAllClaims(String token) {
-        return Jwts.parser().setSigningKey(jwtSigningKey).parseClaimsJwt(token).getBody();
+        return Jwts.parser().setSigningKey(JWT_SIGNING_KEY).parseClaimsJwt(token).getBody();
     }
 
     private Boolean isTokenExpired(String token) {
@@ -58,7 +58,7 @@ public class JwtUtils {
                 .claim("authoraties", userDetails.getAuthorities())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + TimeUnit.HOURS.toMillis(24)))
-                .signWith(SignatureAlgorithm.HS256, jwtSigningKey).compact();
+                .signWith(SignatureAlgorithm.HS256, JWT_SIGNING_KEY).compact();
     }
 
     public Boolean isTokenValid(String token, UserDetails userDetails) {

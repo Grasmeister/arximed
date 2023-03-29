@@ -8,8 +8,6 @@ import com.example.bidding.model.client.Customer;
 import com.example.bidding.model.contract.ContractNew;
 import com.example.bidding.model.createForm.CreateFormApplication;
 import com.example.bidding.model.employee.EmployeeForm;
-import com.example.bidding.model.product.CreateFormProduct;
-import com.example.bidding.model.product.Product;
 import com.example.bidding.model.product.Specification;
 import com.example.bidding.service.ApplicationService;
 import com.example.bidding.service.ContractNewService;
@@ -27,7 +25,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Arrays;
-import java.util.List;
 
 @Controller
 @RequestMapping("/admin")

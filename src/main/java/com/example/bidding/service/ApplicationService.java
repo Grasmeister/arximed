@@ -25,9 +25,7 @@ public class ApplicationService {
         return applicationEntityRepository.findAll();
     }
 
-    public Application findByApplicationId(long id) {
-        return applicationEntityRepository.findByApplicationId(id);
-    }
+
 
     public Application findById(int id) {
         return applicationEntityRepository.findById(id).orElse(new Application());

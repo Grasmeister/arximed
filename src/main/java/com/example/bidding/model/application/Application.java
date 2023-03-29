@@ -48,9 +48,6 @@ public class Application {
     @Column(name = "application_deadline_date")
     private Timestamp applicationDeadlineDate;
 
-//    //Дата окончание рассмотрения заявки
-//    @Column(name = "end_date_of_application_consideration")
-//    private Timestamp endDateOfApplicationConsideration;
 
     //Дата аукциона
     @Column(name = "auction_date")
@@ -72,14 +69,6 @@ public class Application {
     //Размер обеспечения заявки
     @Column(name = "amount_of_application_ensuring")
     private double amountOfApplicationEnsuring;
-
-//    //Размер обеспечения контракта
-//    @Column(name = "amount_of_contract_ensuring")
-//    private double amountOfContractEnsuring;
-//
-//    //Размер обеспечение контракта перечисленные заказчику
-//    @Column(name = "amount_of_contract_ensuring_listed_to_customer")
-//    private double amountOfContractEnsuringListedToCustomer;
 
     // Победитель аукциона
     @Column(name = "auction_winner")
